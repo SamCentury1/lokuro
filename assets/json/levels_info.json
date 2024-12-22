@@ -1,0 +1,797 @@
+
+[
+    {
+        "name": "Mogok Valley Mines",
+        "location": "Mogok Valley, Myanmar",
+        "opened": "Ancient times; commercial mining since the 6th century",
+        "stones": "Rubies (notably 'pigeon blood' rubies), sapphires",
+        "ownership": "Various private and government entities",
+        "description" : "The Mogok Valley Mines, located in Myanmar, are famed for producing the world's most prized rubies, known as 'pigeon blood' rubies. This ancient mining site has been operational for centuries and is also a significant source of sapphires. Managed by both private and government entities, Mogok remains one of the most legendary gemstone sources in history."
+    },
+    {
+        "name": "Montepuez Ruby Mine",
+        "location": "Cabo Delgado Province, Mozambique",
+        "opened": "2012",
+        "stones": "Rubies",
+        "ownership": "Gemfields (75%), Mwiriti Ltd. (25%)",
+        "description" : "The Montepuez Ruby Mine is one of the largest and most important ruby mining operations globally. Located in Mozambique, it was established in 2012 and is responsible for a significant portion of the world's ruby supply. The mine is jointly operated by Gemfields and Mwiriti Ltd., ensuring ethical mining practices and community support."
+    },
+    {
+        "name": "Kagem Emerald Mine",
+        "location": "Copperbelt Province, Zambia",
+        "opened": "1984",
+        "stones": "Emeralds",
+        "ownership": "Gemfields (75%), Industrial Development Corporation of Zambia (25%)",
+        "description" : "The Kagem Emerald Mine is the largest emerald mine in the world and is located in Zambia's Copperbelt Province. Since its inception in 1984, it has been renowned for producing some of the finest emeralds globally. Managed by Gemfields and Zambia's IDC, the mine also invests in sustainable and transparent mining."
+    },
+    {
+        "name": "Muzo Mine",
+        "location": "Boyacá Department, Colombia",
+        "opened": "16th century",
+        "stones": "Emeralds",
+        "ownership": "Various private entities",
+        "description" : "Known as the 'Emerald Capital of the World', the Muzo Mine in Colombia has been a major source of high-quality emeralds since the 16th century. Its vibrant green gemstones are highly sought after in the global market, and the mine is steeped in rich history and legend. Muzo emeralds are particularly prized for their intense color and clarity."
+    },
+    {
+        "name": "Crater of Diamonds State Park",
+        "location": "Murfreesboro, Arkansas, USA",
+        "opened": "1906; became a state park in 1972",
+        "stones": "Diamonds",
+        "ownership": "State of Arkansas",
+        "description" : "The Crater of Diamonds State Park is a unique site where visitors can dig for their diamonds. Established as a public site in 1972, it has yielded notable finds, including the 40.23-carat 'Uncle Sam Diamond.' It is the only diamond mine in the world open to the public for recreational mining."
+    },
+    {
+        "name": "Sandawana Mines",
+        "location": "Mberengwa District, Zimbabwe",
+        "opened": "1958",
+        "stones": "Emeralds, lithium",
+        "ownership": "Kuvimba Mining House",
+        "description" : "The Sandawana Mines in Zimbabwe are renowned for their small yet high-quality emeralds. These gems are often used in precision-cut jewelry due to their brilliance and rich color. Additionally, the mine has expanded its operations to include lithium mining, contributing to the country's mining economy."
+    },
+    {
+        "name": "Hiddenite Gem Mines",
+        "location": "Hiddenite, North Carolina, USA",
+        "opened": "1879",
+        "stones": "Emeralds, hiddenite, sapphires",
+        "ownership": "Various private entities",
+        "description" : "Hiddenite Gem Mines are located in a small North Carolina town famous for its unique green gemstone, hiddenite. Since its discovery in 1879, the area has become a hub for gem enthusiasts searching for emeralds, hiddenite, and sapphires. It’s a historical site for American gemstone mining."
+    },
+    {
+        "name": "Emerald Hollow Mine",
+        "location": "Hiddenite, North Carolina, USA",
+        "opened": "Open to the public for mining",
+        "stones": "Emeralds, sapphires, aquamarine",
+        "ownership": "Private",
+        "description" : "As one of the only emerald mines in the United States open to the public, Emerald Hollow Mine offers a hands-on mining experience. It is known for its wide variety of gemstones, including aquamarine and sapphires, attracting tourists and gem collectors alike."
+    },
+    {
+        "name": "Rainbow Ridge Opal Mine",
+        "location": "Virgin Valley, Nevada, USA",
+        "opened": "Open to the public during summer months",
+        "stones": "Opals",
+        "ownership": "Private",
+        "description" : "The Rainbow Ridge Opal Mine is a hotspot for mining enthusiasts seeking precious opals. Operating during summer, it allows visitors to search for the elusive and vibrant gemstones that are a hallmark of the Virgin Valley region."
+    },
+    {
+        "name": "Bonanza Opal Mine",
+        "location": "Denio, Nevada, USA",
+        "opened": "Open to the public from May to September",
+        "stones": "Fire opals",
+        "ownership": "Private",
+        "description" : "The Bonanza Opal Mine is a destination for opal lovers, producing exquisite fire opals with striking red, orange, and yellow hues. Open seasonally, the mine offers a unique dig-your-own experience for visitors."
+    },
+    {
+        "name": "Graves Mountain",
+        "location": "Lincolnton, Georgia, USA",
+        "opened": "Dates back to the 1920s",
+        "stones": "Rutile, lazulite, pyrophyllite",
+        "ownership": "Private; open for public digs during specific events",
+        "description" : "Graves Mountain is a haven for rock and mineral enthusiasts, known for its striking rutile crystals and other rare minerals. The site occasionally opens to the public for special dig events, offering a glimpse into Georgia's rich geological history."
+    },
+    {
+        "name": "North American Emerald Mine (NAEM)",
+        "location": "Hiddenite, North Carolina, USA",
+        "opened": "Early 2000s",
+        "stones": "Emeralds",
+        "ownership": "Private (James K. Hill)",
+        "description" : "The North American Emerald Mine is a premier site for emerald mining in the United States. Its high-quality gemstones are sold to collectors and jewelers worldwide. The mine contributes to the local economy while maintaining sustainable practices."
+    },
+    {
+        "name": "Adams Mine",
+        "location": "Hiddenite, North Carolina, USA",
+        "opened": "Early 20th century",
+        "stones": "Emeralds, hiddenite",
+        "ownership": "Private",
+        "description" : "The Adams Mine has a storied history as one of the original sites for hiddenite and emerald discoveries in the United States. Its legacy continues to attract gem collectors and history enthusiasts to Hiddenite."
+    },
+    {
+        "name": "Kashmir Sapphire Mines",
+        "location": "Kashmir, India",
+        "opened": "Discovered in the late 19th century",
+        "stones": "Sapphires",
+        "ownership": "Various; currently limited mining due to depletion",
+        "description" : "The Kashmir Sapphire Mines are legendary for producing some of the world's most exquisite blue sapphires. Although mining is now limited, the legacy of these velvety gemstones remains unparalleled in the gemstone world."
+    },
+    {
+        "name": "Ratnapura Mines",
+        "location": "Ratnapura, Sri Lanka",
+        "opened": "Ancient times",
+        "stones": "Sapphires, rubies, garnets, spinels, tourmalines",
+        "ownership": "Local miners and private companies",
+        "description" : "Ratnapura, meaning 'City of Gems', is a world-renowned mining region in Sri Lanka. Its ancient mines have yielded an incredible variety of gemstones, including the famous Ceylon sapphires. This region remains a cornerstone of the global gemstone market, with traditional mining methods still in practice."
+    },
+    {
+        "name": "Fura Gems Ruby Mine",
+        "location": "Montepuez, Mozambique",
+        "opened": "2018",
+        "stones": "Rubies",
+        "ownership": "Fura Gems Inc.",
+        "description" : "Located in the ruby-rich region of Montepuez, Mozambique, the Fura Gems Ruby Mine is one of the newest players in the gemstone mining industry. Known for its ethical and sustainable practices, it produces some of the finest rubies in the world."
+    },
+    {
+        "name": "Argyle Diamond Mine",
+        "location": "Kimberley, Western Australia",
+        "opened": "1983 (closed in 2020)",
+        "stones": "Pink, champagne, and white diamonds",
+        "ownership": "Rio Tinto Group",
+        "description" : "The Argyle Diamond Mine was famous for its pink diamonds, among the rarest gemstones in the world. Before its closure in 2020, it was a leading diamond producer globally, contributing significantly to Australia’s mining industry."
+    },
+    {
+        "name": "Orapa Diamond Mine",
+        "location": "Botswana",
+        "opened": "1971",
+        "stones": "Diamonds",
+        "ownership": "Debswana (De Beers & Botswana Government)",
+        "description" : "Orapa is one of the largest diamond mines in the world, both by volume and area. Managed by Debswana, it has significantly bolstered Botswana’s economy and is a model for responsible mining operations."
+    },
+    {
+        "name": "Cullinan Diamond Mine",
+        "location": "Cullinan, South Africa",
+        "opened": "1903",
+        "stones": "Diamonds (including the Cullinan Diamond)",
+        "ownership": "Petra Diamonds",
+        "description" : "The Cullinan Diamond Mine is legendary for producing the world's largest rough diamond, the Cullinan Diamond, weighing 3,106 carats. This historic site continues to yield high-quality diamonds, cementing South Africa's reputation in the diamond industry."
+    },
+    {
+        "name": "Jwaneng Diamond Mine",
+        "location": "Botswana",
+        "opened": "1982",
+        "stones": "Diamonds",
+        "ownership": "Debswana (De Beers & Botswana Government)",
+        "description" : "Known as the 'richest diamond mine in the world', Jwaneng produces more diamonds by value than any other mine. It is an integral part of Botswana's economy and showcases a successful partnership between De Beers and the government."
+    },
+    {
+        "name": "Mir Mine (Mirny Diamond Mine)",
+        "location": "Mirny, Sakha Republic, Russia",
+        "opened": "1957",
+        "stones": "Diamonds",
+        "ownership": "Alrosa",
+        "description" : "The Mir Mine, also known as the Mirny Diamond Mine, was once one of the deepest open-pit mines in the world. Operated by Alrosa, it produced a significant amount of Russia’s diamonds before transitioning to underground mining in 2001."
+    },
+    {
+        "name": "Ekati Diamond Mine",
+        "location": "Northwest Territories, Canada",
+        "opened": "1998",
+        "stones": "Diamonds",
+        "ownership": "Arctic Canadian Diamond Company",
+        "description" : "The Ekati Diamond Mine is Canada’s first diamond mine, set in the remote Northwest Territories. Known for its high-quality diamonds, it is a pioneer in cold-climate mining and has set benchmarks for environmental responsibility."
+    },
+    {
+        "name": "Diavik Diamond Mine",
+        "location": "Northwest Territories, Canada",
+        "opened": "2003",
+        "stones": "Diamonds",
+        "ownership": "Rio Tinto (60%) and Dominion Diamond Mines (40%)",
+        "description" : "Located near the Arctic Circle, the Diavik Diamond Mine is known for its innovative engineering to operate in extreme conditions. Its pristine diamonds and environmentally conscious mining practices have made it a global leader."
+    },
+    {
+        "name": "Ural Emerald Mines",
+        "location": "Ural Mountains, Russia",
+        "opened": "1831",
+        "stones": "Emeralds",
+        "ownership": "Russian state and private entities",
+        "description" : "The Ural Mountains in Russia are home to emerald mines that have produced some of the most vibrant green gems since the 19th century. These mines hold historical importance and continue to supply emeralds to the global market."
+    },
+    {
+        "name": "Marange Diamond Fields",
+        "location": "Eastern Zimbabwe",
+        "opened": "Discovered in 2006",
+        "stones": "Diamonds",
+        "ownership": "Zimbabwe Consolidated Diamond Company (ZCDC)",
+        "description" : "The Marange Diamond Fields are one of the largest diamond-producing regions in the world. Despite controversy over human rights issues, the fields are a significant contributor to Zimbabwe’s diamond exports."
+    },
+    {
+        "name": "Catoca Diamond Mine",
+        "location": "Lunda Sul Province, Angola",
+        "opened": "1993",
+        "stones": "Diamonds",
+        "ownership": "Endiama (Angola), Alrosa (Russia), Lev Leviev International, and Odebrecht",
+        "description" : "The Catoca Diamond Mine is the fourth-largest diamond mine in the world. Situated in Angola, it produces a significant proportion of the country’s diamond exports and is vital to its economy."
+    },
+    {
+        "name": "Karowe Diamond Mine",
+        "location": "Central District, Botswana",
+        "opened": "2012",
+        "stones": "Diamonds (large, high-quality gems)",
+        "ownership": "Lucara Diamond Corporation",
+        "description" : "Famous for producing the second-largest gem-quality diamond ever found, the 1,109-carat Lesedi La Rona, Karowe is one of the world’s leading producers of exceptional diamonds. It utilizes state-of-the-art technology to identify and recover large stones."
+    },
+    {
+        "name": "Letšeng Diamond Mine",
+        "location": "Maluti Mountains, Lesotho",
+        "opened": "1957",
+        "stones": "High-value diamonds",
+        "ownership": "Gem Diamonds and the Lesotho Government",
+        "description" : "The Letšeng mine is renowned for its low-grade ore but exceptionally high-quality diamonds, including some of the largest gems ever discovered. Its unique production has made it a valuable asset in the global diamond market."
+    },
+    {
+        "name": "Kagem Emerald Mine",
+        "location": "Copperbelt Province, Zambia",
+        "opened": "1984",
+        "stones": "Emeralds",
+        "ownership": "Gemfields (75%) and the Zambian Government (25%)",
+        "description" : "The Kagem Emerald Mine is the world’s largest producer of emeralds. Operated with a focus on sustainability and transparency, it is a cornerstone of Zambia’s gemstone industry."
+    },
+    {
+        "name": "Premier Diamond Mine (Cullinan Mine)",
+        "location": "Cullinan, South Africa",
+        "opened": "1902",
+        "stones": "Diamonds",
+        "ownership": "Petra Diamonds",
+        "description" : "Known as the birthplace of the Cullinan Diamond, this mine has a storied history and continues to produce rare and valuable gems, including blue diamonds. It remains a major attraction for both mining and tourism."
+    },
+    {
+        "name": "Grizzly Emerald Mine",
+        "location": "Copperbelt Province, Zambia",
+        "opened": "2000s",
+        "stones": "Emeralds",
+        "ownership": "Private Zambian company",
+        "description" : "Located near Kagem, the Grizzly Mine is a significant player in Zambia’s emerald mining sector. It is known for producing high-quality emeralds that are sold in global markets."
+    },
+    {
+        "name": "Bunder Diamond Project",
+        "location": "Madhya Pradesh, India",
+        "opened": "Development phase",
+        "stones": "Diamonds",
+        "ownership": "Aditya Birla Group",
+        "description" : "Initially explored by Rio Tinto, the Bunder Diamond Project was later taken over by the Aditya Birla Group. It represents one of India’s most promising diamond mining ventures."
+    },
+    {
+        "name": "Mount Weld Rare Earth Mine",
+        "location": "Western Australia",
+        "opened": "2007",
+        "stones": "Rare earth minerals",
+        "ownership": "Lynas Rare Earths",
+        "description" : "Although primarily focused on rare earth elements, Mount Weld’s resources play a crucial role in technology and clean energy solutions, with gemstones occasionally found as by-products."
+    },
+    {
+        "name": "Merelani Tanzanite Mines",
+        "location": "Simanjiro District, Tanzania",
+        "opened": "1967",
+        "stones": "Tanzanite",
+        "ownership": "TanzaniteOne and local miners",
+        "description" : "The Merelani mines are the sole source of tanzanite, a rare gemstone found only in Tanzania. Its vivid blue and violet hues make it one of the most sought-after gems in the world."
+    },
+    {
+        "name": "Golconda Mines",
+        "location": "Hyderabad, India",
+        "opened": "Ancient times (now inactive)",
+        "stones": "Diamonds (historical)",
+        "ownership": "Historical site",
+        "description" : "Once the source of legendary diamonds like the Koh-i-Noor and Hope Diamond, the Golconda mines are now a historical site. They remain a symbol of India’s rich gemstone heritage."
+    },
+    {
+        "name": "Diwan Bahadur Satya Mine",
+        "location": "Panna, Madhya Pradesh, India",
+        "opened": "Historical times",
+        "stones": "Diamonds",
+        "ownership": "Government of Madhya Pradesh",
+        "description" : "The Panna mines are India’s only active diamond mining region, known for producing high-quality diamonds. They play a crucial role in local employment and the country’s gem market."
+    },
+    {
+        "name": "Mogok Stone Tract",
+        "location": "Mandalay Region, Myanmar",
+        "opened": "Ancient times",
+        "stones": "Rubies, sapphires, spinels",
+        "ownership": "Government and local miners",
+        "description" : "Mogok, also known as the 'Valley of Rubies,' is a legendary mining region producing some of the finest rubies in history. It is a vital part of Myanmar’s gemstone industry."
+    },
+    {
+        "name": "Greenland Ruby Mine",
+        "location": "Aappaluttoq, Greenland",
+        "opened": "2017",
+        "stones": "Rubies and pink sapphires",
+        "ownership": "Greenland Ruby",
+        "description": "This mine is unique for its Arctic location, producing stunning rubies and pink sapphires. Its gems are certified as ethically sourced."
+    },
+    {
+        "name": "Chivor Emerald Mine",
+        "location": "Boyacá, Colombia",
+        "opened": "1537",
+        "stones": "Emeralds",
+        "ownership": "Various private companies",
+        "description" : "The Chivor mine is one of Colombia’s historic emerald mines, known for its bright, vibrant green stones. It has played a significant role in the global emerald trade for centuries."
+    },
+    {
+        "name": "Coscuez Emerald Mine",
+        "location": "Boyacá, Colombia",
+        "opened": "Pre-Columbian times",
+        "stones": "Emeralds",
+        "ownership": "Fura Gems",
+        "description" : "The Coscuez mine has produced some of the world’s largest emeralds, making it a prized asset in the gemstone industry. It continues to yield high-quality gems."
+    },
+    {
+        "name": "Marropino Mine",
+        "location": "Zambezia Province, Mozambique",
+        "opened": "Early 2000s",
+        "stones": "Morganite, tourmaline",
+        "ownership": "Private entities",
+        "description" : "The Marropino Mine is famous for its pink morganite, a gemstone increasingly popular in fine jewelry. It also produces other colored gemstones."
+    },
+    {
+        "name": "Belmont Mine",
+        "location": "Minas Gerais, Brazil",
+        "opened": "1978",
+        "stones": "Emeralds",
+        "ownership": "Belmont Emeralds",
+        "description" : "The Belmont Mine is a leader in mechanized mining, producing consistently high-quality emeralds. It is celebrated for its sustainable practices."
+    },
+    {
+        "name": "Kaliningrad Amber Mine",
+        "location": "Kaliningrad, Russia",
+        "opened": "1947",
+        "stones": "Amber",
+        "ownership": "Kaliningrad Amber Factory",
+        "description" : "This mine supplies over 90% of the world’s amber, making it a critical hub for this fossilized resin. Its products are widely used in jewelry and decorative arts."
+    },
+    {
+        "name": "Ratnapura Sapphire Mine",
+        "location": "Sri Lanka",
+        "opened": "Ancient times",
+        "stones": "Sapphires",
+        "ownership": "Local miners",
+        "description" : "Known for the famous Ceylon sapphires, these mines produce stones with unparalleled color and clarity. Ratnapura remains central to Sri Lanka’s gem trade."
+    },
+    {
+        "name": "Hiddenite Mine",
+        "location": "North Carolina, USA",
+        "opened": "19th century",
+        "stones": "Emeralds, hiddenite",
+        "ownership": "Emerald Hollow Mine, Inc.",
+        "description" : "Hiddenite, named after the unique green gemstone first found here, is one of the few places in the world where emeralds and hiddenite are mined together."
+    },
+    {
+        "name": "Udachnaya Diamond Mine",
+        "location": "Sakha Republic, Russia",
+        "opened": "1955",
+        "stones": "Diamonds",
+        "ownership": "Alrosa",
+        "description" : "The Udachnaya Diamond Mine is one of Russia's oldest and largest diamond mines. It continues to produce significant quantities of high-quality diamonds, making it a cornerstone of Alrosa’s operations."
+    },
+    {
+        "name": "Arusha Gemstone Mine",
+        "location": "Arusha, Tanzania",
+        "opened": "1990s",
+        "stones": "Tanzanite",
+        "ownership": "Local miners and small-scale operations",
+        "description" : "This mine is part of Tanzania’s robust gemstone industry and contributes to the global supply of tanzanite. Its deep violet-blue stones are highly sought after in the jewelry market."
+    },
+    {
+        "name": "Anahi Mine",
+        "location": "Santa Cruz, Bolivia",
+        "opened": "17th century (rediscovered in the 1970s)",
+        "stones": "Ametrine, amethyst",
+        "ownership": "Private Bolivian company",
+        "description" : "The Anahi Mine is the world’s primary source of ametrine, a unique gemstone with both amethyst and citrine hues. Its historical roots date back to Spanish explorers who valued it for its rarity."
+    },
+    {
+        "name": "Green Dragon Mine",
+        "location": "Qinghai Province, China",
+        "opened": "1990s",
+        "stones": "Turquoise",
+        "ownership": "Chinese government and local entities",
+        "description" : "The Green Dragon Mine is a leading source of high-quality turquoise. Its vibrant blue-green stones are highly prized in traditional and modern jewelry designs."
+    },
+    {
+        "name": "Red Beryl Mine",
+        "location": "Wah Wah Mountains, Utah, USA",
+        "opened": "1950s",
+        "stones": "Red beryl",
+        "ownership": "Gemstone Mining, Inc.",
+        "description" : "Red beryl, one of the rarest gemstones in the world, is found almost exclusively in this mine. Often referred to as 'red emerald', it commands high prices due to its scarcity and beauty."
+    },
+    {
+        "name": "Marange Diamond Fields",
+        "location": "Eastern Zimbabwe",
+        "opened": "2006",
+        "stones": "Diamonds",
+        "ownership": "Zimbabwe Consolidated Diamond Company (ZCDC)",
+        "description" : "The Marange Diamond Fields are among the richest diamond deposits discovered in recent decades. However, they are controversial due to issues surrounding governance and ethics in mining."
+    },
+    {
+        "name": "Paraba Tourmaline Mine",
+        "location": "Paraíba State, Brazil",
+        "opened": "1980s",
+        "stones": "Paraíba tourmalines",
+        "ownership": "Various private companies",
+        "description" : "Famous for its vivid neon-blue tourmalines, this mine produces some of the rarest and most beautiful gemstones in the world. The stones' unique color is due to trace amounts of copper."
+    },
+    {
+        "name": "Altyn-Tyube Mine",
+        "location": "Kazakhstan",
+        "opened": "Historical (modern operations unknown)",
+        "stones": "Chrysoberyl, alexandrite",
+        "ownership": "Local operations",
+        "description" : "This mine is notable for producing rare alexandrite, a color-changing gemstone highly prized by collectors. Its historical significance adds to its allure in the gem world."
+    },
+    {
+        "name": "Luderitz Diamond Mine",
+        "location": "Coastal Namibia",
+        "opened": "1908",
+        "stones": "Diamonds",
+        "ownership": "Namdeb (De Beers and Namibian government partnership)",
+        "description" : "Luderitz is part of Namibia’s diamond mining legacy, known for its rich deposits of high-quality gems. Offshore and terrestrial mining operations contribute to its production."
+    },
+    {
+        "name": "Pederneira Mine",
+        "location": "Minas Gerais, Brazil",
+        "opened": "1940s",
+        "stones": "Tourmaline",
+        "ownership": "Private entity",
+        "description" : "This mine is celebrated for its vibrant tourmaline crystals, which come in a range of striking colors. It has become a global source of fine collector’s specimens."
+    },
+    {
+        "name": "Hidden Valley Mine",
+        "location": "Morobe Province, Papua New Guinea",
+        "opened": "2010",
+        "stones": "Gold and silver (gem-quality specimens occasionally found)",
+        "ownership": "Harmony Gold and Newcrest Mining",
+        "description" : "While primarily a gold and silver mine, Hidden Valley occasionally yields unique gemstones, making it a versatile and valuable mining operation in the region."
+    },
+    {
+        "name": "Taita-Taveta Gemstone Mine",
+        "location": "Taita-Taveta County, Kenya",
+        "opened": "2000s",
+        "stones": "Tsavorite garnet, tourmaline",
+        "ownership": "Local miners and cooperatives",
+        "description" : "This mine produces some of the finest tsavorite garnets and tourmalines in Africa. It plays a key role in Kenya's gemstone export market."
+    },
+    {
+        "name": "Lomonosov Diamond Mine",
+        "location": "Arkhangelsk Oblast, Russia",
+        "opened": "2005",
+        "stones": "Diamonds",
+        "ownership": "Alrosa",
+        "description" : "The Lomonosov mine is part of Russia’s expanding diamond mining industry, producing high-quality stones from kimberlite deposits. Its operations focus on sustainability and technological innovation."
+    },
+    {
+        "name": "Tsar Emerald Mine",
+        "location": "Sverdlovsk Oblast, Russia",
+        "opened": "19th century",
+        "stones": "Emeralds",
+        "ownership": "Russian government and private enterprises",
+        "description" : "Famed for its imperial history, the Tsar Mine produces high-quality emeralds prized for their deep green color and clarity."
+    },
+    {
+        "name": "Tiébaghi Mine",
+        "location": "New Caledonia",
+        "opened": "Early 1900s",
+        "stones": "Garnets, chrysoprase",
+        "ownership": "Private companies",
+        "description" : "Although better known for nickel, Tiébaghi also produces beautiful garnets and chrysoprase, contributing to the gem market in the Pacific region."
+    },
+    {
+        "name": "Four Peaks Amethyst Mine",
+        "location": "Arizona, USA",
+        "opened": "Early 20th century",
+        "stones": "Amethyst",
+        "ownership": "Private ownership",
+        "description" : "This mine is famous for its rich purple amethysts, often referred to as 'Arizona amethyst'. Its gems are valued for their intense color and natural beauty."
+    },
+    {
+        "name": "Nyala Ruby Mine",
+        "location": "Chimanimani Mountains, Mozambique",
+        "opened": "2000s",
+        "stones": "Rubies",
+        "ownership": "Gemfields",
+        "description" : "Nyala is one of the largest ruby mines in the world, producing stones of remarkable color and quality. It is managed with an emphasis on ethical mining practices."
+    },
+    {
+        "name": "Dana Quarry",
+        "location": "Maine, USA",
+        "opened": "20th century",
+        "stones": "Tourmaline, beryl",
+        "ownership": "Local entities",
+        "description" : "The Quarry is known for its beautifully colored tourmalines, which attract both collectors and jewelers. Its geological richness makes it a prime location for gemstone hunting."
+    },
+    {
+        "name": "Tsavo National Park Mines",
+        "location": "Kenya",
+        "opened": "1960s",
+        "stones": "Tsavorite garnet",
+        "ownership": "Local miners and cooperatives",
+        "description" : "Located near Tsavo National Park, these mines are the primary source of tsavorite garnets, which are named after the park itself. The gemstones are treasured for their vibrant green hue and exceptional clarity."
+    },
+    {
+        "name": "Belmont Emerald Mine",
+        "location": "Minas Gerais, Brazil",
+        "opened": "1978",
+        "stones": "Emeralds",
+        "ownership": "Belmont Group",
+        "description" : "The Belmont Mine is one of the most modern emerald mines in the world, known for producing high-quality stones. Its focus on sustainable practices makes it a benchmark in the gemstone industry."
+    },
+    {
+        "name": "Pailin Ruby and Sapphire Mines",
+        "location": "Pailin, Cambodia",
+        "opened": "Historical (modern operations ongoing)",
+        "stones": "Rubies, sapphires",
+        "ownership": "Local operations",
+        "description" : "Pailin is famous for its historic ruby and sapphire deposits, which have been mined since ancient times. The region continues to yield gemstones renowned for their vivid colors."
+    },
+    {
+        "name": "Eilat Stone Mine",
+        "location": "Eilat, Israel",
+        "opened": "Historical (ancient copper mines repurposed)",
+        "stones": "Eilat stone (malachite, azurite, chrysocolla mix)",
+        "ownership": "Local entities",
+        "description" : "Eilat stone is Israel’s national stone and is mined in limited quantities from ancient copper deposits. Its striking blue-green patterns make it a sought-after decorative gem."
+    },
+    {
+        "name": "Campo del Cielo Meteorite Mine",
+        "location": "Chaco Province, Argentina",
+        "opened": "Discovered ~1576 (mining in the 20th century)",
+        "stones": "Meteorite iron with rare gemstones",
+        "ownership": "Local and private operations",
+        "description" : "Though primarily known for its meteorite iron, the area has also yielded rare extraterrestrial gemstones like pallasite. It offers a unique glimpse into celestial geology."
+    },
+    {
+        "name": "Las Chispas Mine",
+        "location": "Sonora, Mexico",
+        "opened": "2016 (modern operations)",
+        "stones": "Silver with gemstone-quality byproducts",
+        "ownership": "SilverCrest Metals",
+        "description" : "Las Chispas primarily produces silver but occasionally yields gemstone-quality specimens. Its modern operations focus on efficiency and sustainability."
+    },
+    {
+        "name": "Ratnapura Gem Fields",
+        "location": "Ratnapura, Sri Lanka",
+        "opened": "Ancient times",
+        "stones": "Sapphires, rubies, alexandrite",
+        "ownership": "Local artisanal miners and small businesses",
+        "description" : "Known as the 'City of Gems', Ratnapura has been a gem mining hub for centuries. It produces some of the world’s finest sapphires and other precious stones."
+    },
+    {
+        "name": "Tunduru Gemfields",
+        "location": "Southern Tanzania",
+        "opened": "1990s",
+        "stones": "Sapphires, garnets, spinel",
+        "ownership": "Local miners and international partnerships",
+        "description" : "The Tunduru fields are celebrated for their multi-colored gemstones, including sapphires in rare hues. The region’s river gravels are a rich source of these treasures."
+    },
+    {
+        "name": "Kagem Emerald Mine",
+        "location": "Copperbelt Province, Zambia",
+        "opened": "1980s",
+        "stones": "Emeralds",
+        "ownership": "Gemfields",
+        "description" : "Kagem is the largest emerald mine in the world, producing gems known for their rich green color. It’s a leader in ethical mining and environmental stewardship."
+    },
+    {
+        "name": "Broken Hill Mine",
+        "location": "New South Wales, Australia",
+        "opened": "1883",
+        "stones": "Rhodonite, silver",
+        "ownership": "Perilya Limited",
+        "description" : "Although primarily a silver mine, Broken Hill is famous for its rare rhodonite crystals, a striking pink gemstone. The mine is a significant contributor to Australia’s mining history."
+    },
+    {
+        "name": "Panguma Diamond Mine",
+        "location": "Eastern Sierra Leone",
+        "opened": "1930s",
+        "stones": "Diamonds",
+        "ownership": "Local and international companies",
+        "description" : "Panguma is a key player in Sierra Leone’s diamond industry. Its gems are part of the region’s recovery efforts and economic growth."
+    },
+    {
+        "name": "Baikal Emerald Mine",
+        "location": "Irkutsk Oblast, Russia",
+        "opened": "2000s",
+        "stones": "Emeralds",
+        "ownership": "Local private companies",
+        "description" : "This mine is known for producing high-quality emeralds with deep green hues, contributing to Russia’s gem mining industry."
+    },
+    {
+        "name": "Kangayam Mines",
+        "location": "Tamil Nadu, India",
+        "opened": "1900s",
+        "stones": "Garnets",
+        "ownership": "Local artisanal miners",
+        "description" : "Kangayam is a notable source of garnets, especially the vibrant orange and red varieties. The region’s gems are widely used in traditional Indian jewelry."
+    },
+    {
+        "name": "North Mara Mine",
+        "location": "Mara Region, Tanzania",
+        "opened": "2002",
+        "stones": "Gold, gemstone byproducts",
+        "ownership": "Barrick Gold Corporation",
+        "description" : "While primarily a gold mine, North Mara occasionally yields gemstones like garnets and spinel. Its operations focus on balancing profitability and environmental responsibility."
+    },
+    {
+        "name": "Mogok Ruby Mine",
+        "location": "Mogok, Myanmar",
+        "opened": "Ancient times",
+        "stones": "Rubies, sapphires, spinel",
+        "ownership": "Local miners and partnerships",
+        "description" : "Mogok is renowned for its 'pigeon blood' rubies, considered the finest in the world. This legendary region has been a cornerstone of Myanmar’s gemstone heritage for centuries."
+    },
+    {
+        "name": "Lake George Gem and Mineral Mine",
+        "location": "Colorado, USA",
+        "opened": "1950s",
+        "stones": "Amazonite, smoky quartz",
+        "ownership": "Local private owners",
+        "description" : "Lake George is famous for its amazonite crystals paired with smoky quartz, creating striking mineral specimens popular among collectors."
+    },
+    {
+        "name": "Luc Yen Gem Fields",
+        "location": "Yen Bai Province, Vietnam",
+        "opened": "1980s",
+        "stones": "Rubies, spinel, sapphire",
+        "ownership": "Local cooperatives",
+        "description" : "The Luc Yen fields are a treasure trove of colorful gemstones. Their rubies and spinels are particularly valued for their vibrant colors and quality."
+    },
+    {
+        "name": "Coscuez Emerald Mine",
+        "location": "Boyacá, Colombia",
+        "opened": "Pre-Columbian times (modern operations ongoing)",
+        "stones": "Emeralds",
+        "ownership": "Fura Gems",
+        "description" : "Coscuez is one of Colombia’s most historic emerald mines, known for producing large, high-quality stones. Its operations balance modern mining techniques with traditional practices."
+    },
+    {
+        "name": "Mirny Mine",
+        "location": "Mirny, Sakha Republic, Russia",
+        "opened": "1957",
+        "stones": "Diamonds",
+        "ownership": "Alrosa",
+        "description" : "The Mirny Mine is one of the largest diamond-producing mines globally. This open-pit mine is so massive that it has become a tourist attraction and a symbol of Russia’s rich diamond reserves."
+    },
+    {
+        "name": "Madagascar Sapphires Mine",
+        "location": "Ilakaka, Madagascar",
+        "opened": "1998",
+        "stones": "Sapphires",
+        "ownership": "Local artisanal miners and cooperatives",
+        "description" : "Ilakaka has become one of the world's largest sapphire mining regions since its discovery in the late 1990s. It produces a wide variety of high-quality blue and fancy-colored sapphires."
+    },
+    {
+        "name": "Diavik Diamond Mine",
+        "location": "Northwest Territories, Canada",
+        "opened": "2003",
+        "stones": "Diamonds",
+        "ownership": "Rio Tinto (60%) and Dominion Diamond Mines (40%)",
+        "description" : "Situated on a small island in Canada’s remote tundra, the Diavik Mine produces some of the world's highest-quality diamonds. Its operations are notable for their focus on environmental sustainability."
+    },
+    {
+        "name": "Argyle Diamond Mine",
+        "location": "Kimberley, Western Australia",
+        "opened": "1983 (Closed in 2020)",
+        "stones": "Pink diamonds, champagne diamonds",
+        "ownership": "Rio Tinto",
+        "description" : "The Argyle Mine was globally famous for its rare pink diamonds and contributed significantly to the world’s diamond market. Although now closed, its legacy remains influential."
+    },
+    {
+        "name": "Green Dragon Mine",
+        "location": "Hunan Province, China",
+        "opened": "2000s",
+        "stones": "Fluorite",
+        "ownership": "Local cooperatives",
+        "description" : "The Green Dragon Mine is celebrated for its vibrant fluorite specimens, which are highly sought after by collectors. These gemstones often feature vivid greens and purples."
+    },
+    {
+        "name": "Jwaneng Diamond Mine",
+        "location": "Botswana",
+        "opened": "1982",
+        "stones": "Diamonds",
+        "ownership": "Debswana (a joint venture between De Beers and the Botswana government)",
+        "description" : "Jwaneng, meaning 'place of small stones', is the richest diamond mine by value globally. It plays a crucial role in Botswana’s economy and diamond industry."
+    },
+    {
+        "name": "Okkampitiya Mines",
+        "location": "Monaragala District, Sri Lanka",
+        "opened": "Ancient times",
+        "stones": "Star sapphires, blue sapphires",
+        "ownership": "Local artisanal miners",
+        "description" : "Okkampitiya is renowned for its star sapphires, which exhibit a beautiful asterism effect. The region has been a source of gemstones for centuries."
+    },
+    {
+        "name": "Khodayar Ruby Mines",
+        "location": "Badakhshan Province, Afghanistan",
+        "opened": "Ancient times",
+        "stones": "Rubies, spinels",
+        "ownership": "Local and traditional operations",
+        "description" : "These mines in Afghanistan are a historic source of 'Balas rubies' (actually spinels) and vivid red rubies. They were highly prized in ancient civilizations."
+    },
+    {
+        "name": "Lục Yên Ruby Mines",
+        "location": "Yen Bai Province, Vietnam",
+        "opened": "1980s",
+        "stones": "Rubies, spinels, garnets",
+        "ownership": "Local cooperatives",
+        "description" : "The Lục Yên mines produce stunning rubies and spinels, celebrated for their rich, vibrant colors. These gemstones are an essential part of Vietnam's gem industry."
+    },
+    {
+        "name": "Kalimantan Diamond Fields",
+        "location": "Borneo, Indonesia",
+        "opened": "Historical (ongoing artisanal mining)",
+        "stones": "Diamonds",
+        "ownership": "Local artisanal miners",
+        "description" : "The diamond fields of Kalimantan have been mined since ancient times. They are known for producing small but high-quality diamonds."
+    },
+    {
+        "name": "Pamir Spinel Mines",
+        "location": "Pamir Mountains, Tajikistan",
+        "opened": "Ancient times",
+        "stones": "Spinels",
+        "ownership": "Local artisanal miners",
+        "description" : "These ancient mines have produced 'Balas rubies', which are spinels with vibrant pink-red hues. They were once treasured by royalty and remain highly valued."
+    },
+    {
+        "name": "Mount Weld Garnet Mine",
+        "location": "Western Australia",
+        "opened": "1980s",
+        "stones": "Garnets",
+        "ownership": "Lynas Corporation",
+        "description" : "Mount Weld is known for its high-quality garnets used in both industrial applications and jewelry. It is also a significant rare earth mining site."
+    },
+    {
+        "name": "Chivor Emerald Mine",
+        "location": "Boyacá, Colombia",
+        "opened": "Pre-Columbian times (modern operations ongoing)",
+        "stones": "Emeralds",
+        "ownership": "Fura Gems",
+        "description" : "Chivor is one of Colombia’s legendary emerald mines, producing stunning green gemstones since pre-Columbian times. Its emeralds are known for their exceptional clarity."
+    },
+    {
+        "name": "Red Beryl Mine",
+        "location": "Wah Wah Mountains, Utah, USA",
+        "opened": "1958",
+        "stones": "Red beryl",
+        "ownership": "Private companies",
+        "description" : "Red beryl is one of the rarest gemstones in the world, and this mine is one of its few sources. The vibrant red gems are sometimes called 'red emeralds'."
+    },
+    {
+        "name": "Cerro Cuchillo Mine",
+        "location": "Chihuahua, Mexico",
+        "opened": "Early 2000s",
+        "stones": "Fire opals",
+        "ownership": "Local and private miners",
+        "description" : "This mine produces fiery orange and red opals, highly valued for their vivid play-of-color. Mexican fire opals are globally celebrated for their unique beauty."
+    },
+    {
+        "name": "Anahi Mine",
+        "location": "Santa Cruz, Bolivia",
+        "opened": "1600s",
+        "stones": "Ametrine",
+        "ownership": "Local partnerships",
+        "description" : "The Anahi Mine is the world’s primary source of ametrine, a unique gemstone with both amethyst and citrine hues. It has been mined since Spanish colonial times."
+    },
+    {
+        "name": "Ceylon Moonstone Mine",
+        "location": "Matale, Sri Lanka",
+        "opened": "Ancient times",
+        "stones": "Moonstone",
+        "ownership": "Local miners",
+        "description" : "Sri Lanka is renowned for its moonstones, which display a beautiful adularescence. These gemstones are a staple in traditional Sri Lankan jewelry."
+    },
+
+    {
+        "name": "Lucara’s Karowe Mine",
+        "location": "Botswana",
+        "opened": "2012",
+        "stones": "Diamonds",
+        "ownership": "Lucara Diamond Corporation",
+        "description" : "The Karowe Mine is famous for producing some of the world’s largest and most valuable diamonds. It’s a major contributor to Botswana’s diamond exports"
+    }
+
+]
