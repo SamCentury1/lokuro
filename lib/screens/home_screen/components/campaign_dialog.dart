@@ -119,11 +119,12 @@ class CampaignDialog extends StatelessWidget {
                           1: FlexColumnWidth(3),
                         },
                         children: <TableRow>[
+                          campaignTableRow("Mine: ", campaign["campaignName"]),
                           campaignTableRow("Difficulty: ",convertDifficultyCodeToString(campaign["difficulty"])),
                           campaignTableRow("Levels: ",campaign["levels"].length.toString(),),
                           campaignTableRow("Opened: ",campaign["opened"]),
                           campaignTableRow("Stones Mined: ",campaign["stones"]),
-                          campaignTableRow("ownership: ",campaign["ownership"]),
+                          // campaignTableRow("ownership: ",campaign["ownership"]),
                         ],
                       ),
                     ),
@@ -180,11 +181,11 @@ class CampaignDialog extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
-              top: 0,
-              left: 0,
-              child: campaignCardCampaignName(context, campaign["campaignName"], campaign["location"]),
-            ),            
+            // Positioned(
+            //   top: 0,
+            //   left: 0,
+            //   child: campaignCardCampaignName(context, campaign["campaignName"], campaign["location"]),
+            // ),            
             // Positioned(
             //   bottom: 0,
             //   right: 0,

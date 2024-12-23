@@ -120,351 +120,429 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
             body: AnimatedBuilder(
               animation: gameStartedController,
               builder: (context,child) {
-                return Stack(
+                return Column(
                   children: [
-                    SizedBox(
-                      width: settingsState.screenSize.width,
-                      height: settingsState.screenSize.height,
-                      child: CustomPaint(
-                        painter: BackgroundPainter(
-                          settingsState: settingsState,
-                          gamePlayState: gamePlayState,
-                          startingAnimation: gameStartedAnimation,
-                          settings: settings,
-                        ),
-                      ),
-                    ),
-                    
-                    Positioned(
-                
-                      child: GestureDetector(
-                        onPanStart: (DragStartDetails details) {
-                          Offset touchPoint = details.localPosition;
-                              
-                          late bool touchValid = false;
-                              
-                          // Check if the touch point is inside any obstacle
-                          for (var obstacleObject in gamePlayState.obstacleData) {
-                            if (obstacleObject["active"] && obstacleObject["path"] != null && obstacleObject["key"]!=0) {
-                              if (obstacleObject["path"]!.contains(touchPoint)) {
-                                print("Touch on obstacle - ignoring input");
-                                touchValid = false;
-                                return; // Prevent interaction if inside an obstacle
-                              } else {
-                                touchValid = true;
-                                // gamePlayState.setIsInvalidDrag(true);
-                              }
-                            }
-                          }
-                          for (var boundaryObject in gamePlayState.boundaryData) {
-                            if (boundaryObject["path"]!=null) {
-
-                              Path boundaryPath = Path();
-                              boundaryPath.moveTo(boundaryObject["points"][0].dx,boundaryObject["points"][0].dy);
-                              for (int i=0;i<boundaryObject["points"].length;i++) {
-                                boundaryPath.lineTo(boundaryObject["points"][i].dx,boundaryObject["points"][i].dy);
-                              }
-                              boundaryPath.close();
-
-                              if (boundaryPath.contains(touchPoint)) {
-                                print("Touch on boundary - ignoring input");
-                                touchValid = false;
-                                return;
-                              } else {
-                                touchValid = true;
-                              }
-                            }
-                          }
-                          if (touchValid) {
-                            GameLogic().panStart(gamePlayState,details);
-                          }
-                        },
-                        onPanUpdate: (DragUpdateDetails details) => GameLogic().panUpdate(gamePlayState,details),
-                        onPanEnd: (DragEndDetails details) => GameLogic().panEnd(context, gamePlayState,details,settingsState,settings),
-                        onTap: () {
-                          if (gamePlayState.isGameActive) {
-                            
-                            print("tapped while game is active");
-                            gamePlayState.setIsGameActive(false);
-                            gamePlayState.restartGame();
-                            // gamePlayState.setBoundaryData(gamePlayState.boundaryData);
-                            gamePlayState.pauseGame();
-                            int currentLevel = gamePlayState.levelKey!; // Retrieve the current level key
-                            int currentCampaign = gamePlayState.campaignKey!;
-                            General().initializeGame(context, currentCampaign, currentLevel, settingsState, gamePlayState,settings);                            
-                            
-                            
-                            // General().initializeGame(context, gamePlayState.levelKey!, settingsState, gamePlayState);
-                          } else {
-                            print("tapped while game is not active");
-                          }
-                        },
-                        
-                        child: Container(
-                          width: settingsState.playAreaSize.width,
+                    Stack(
+                      children: [
+                        SizedBox(
+                          width: settingsState.screenSize.width,
                           height: settingsState.playAreaSize.height,
-                          child: Builder(
-                            builder: (context) {
-                              if (gamePlayState.isDragStart) {
-                                return CustomPaint(
-                                  painter: WindupPainter(gamePlayState: gamePlayState),
-                                );
-                              } else if (gamePlayState.isDragEnd) {
-                                return CustomPaint(
-                                  painter: LiveGamePainter(gamePlayState: gamePlayState),
-                                );                                      
-                              } else {
-                                return CustomPaint(
-                                  painter: StartingStatePainter(
-                                    gamePlayState: gamePlayState, 
-                                    settingsState: settingsState,
-                                    startingAnimation: gameStartedAnimation
-                                  ),
-                                );
-                              }
-                            }
-                          )
-                        ),
-                      ),
-                
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: _isBottomBarActive ? Radius.circular(25.0) : Radius.circular(0.0),
-                            topRight: _isBottomBarActive ? Radius.circular(25.0) : Radius.circular(0.0),
+                          child: CustomPaint(
+                            painter: BackgroundPainter(
+                              settingsState: settingsState,
+                              gamePlayState: gamePlayState,
+                              startingAnimation: gameStartedAnimation,
+                              settings: settings,
+                            ),
                           ),
-                          color: const Color.fromARGB(255, 238, 231, 231).withOpacity(1.0),
                         ),
-                        width: settingsState.playAreaSize.width,
-                        // height: getBottomBarHeight(_isBottomBarActive, gamePlayState, settingsState.playAreaSize.height),
-                        // height: _isBottomBarActive ? 200.0 : 60.0,
-                        height: getBottomBarHeight(_isBottomBarActive, _isBottomBarSuperActive),
-                        child: Stack(
-                          children: [
-                
-                            Positioned(
-                              left: 10,
-                              top: 0,
-                              child: SizedBox(
-                                height: 60,
-                                width: 60,
+                        
+                        Positioned(
+                          top: 0,
+                          child: GestureDetector(
+                            onPanStart: (DragStartDetails details) {
+                              Offset touchPoint = details.localPosition;
+                                  
+                              late bool touchValid = false;
+                                  
+                              // Check if the touch point is inside any obstacle
+                              for (var obstacleObject in gamePlayState.obstacleData) {
+                                if (obstacleObject["active"] && obstacleObject["path"] != null && obstacleObject["key"]!=0) {
+                                  if (obstacleObject["path"]!.contains(touchPoint)) {
+                                    print("Touch on obstacle - ignoring input");
+                                    touchValid = false;
+                                    return; // Prevent interaction if inside an obstacle
+                                  } else {
+                                    touchValid = true;
+                                    // gamePlayState.setIsInvalidDrag(true);
+                                  }
+                                }
+                              }
+                              for (var boundaryObject in gamePlayState.boundaryData) {
+                                if (boundaryObject["path"]!=null) {
+                    
+                                  Path boundaryPath = Path();
+                                  boundaryPath.moveTo(boundaryObject["points"][0].dx,boundaryObject["points"][0].dy);
+                                  for (int i=0;i<boundaryObject["points"].length;i++) {
+                                    boundaryPath.lineTo(boundaryObject["points"][i].dx,boundaryObject["points"][i].dy);
+                                  }
+                                  boundaryPath.close();
+                    
+                                  if (boundaryPath.contains(touchPoint)) {
+                                    print("Touch on boundary - ignoring input");
+                                    touchValid = false;
+                                    return;
+                                  } else {
+                                    touchValid = true;
+                                  }
+                                }
+                              }
+                              if (touchValid) {
+                                GameLogic().panStart(gamePlayState,details);
+                              }
+                            },
+                            onPanUpdate: (DragUpdateDetails details) => GameLogic().panUpdate(gamePlayState,details),
+                            onPanEnd: (DragEndDetails details) => GameLogic().panEnd(context, gamePlayState,details,settingsState,settings),
+                            onTap: () {
+                              if (gamePlayState.isGameActive) {
                                 
-                                child: Center(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(width: 2.0, color: const Color.fromARGB(164, 39, 39, 39)),
-                                      borderRadius: BorderRadius.all(Radius.circular(100.0)),
-                                    ),
-                                    width: 30,
-                                    height: 30,
-                                    child: Center(
-                                      child: Text(
-                                        gamePlayState.levelKey.toString()
-                                      )
-                                    )
-                                  ),
-                                )
-                              )
-                            ),
-                
-                            Positioned(
-                              top: 0,
-                              child: GestureDetector(
-                                onTap: () {
-                                  if (_isBottomBarActive && !_isBottomBarSuperActive) {
-                                    setState(() {
-                                      _isBottomBarActive = true;
-                                      _isBottomBarSuperActive = true;
-                                    });                                
-                                  }
-                
-                                  else if (!_isBottomBarActive && !_isBottomBarSuperActive) {
-                                    setState(() {
-                                      _isBottomBarActive = true;
-                                      _isBottomBarSuperActive = false;
-                                    });                                 
-                                  }
-                
-                                  else if (_isBottomBarActive && _isBottomBarSuperActive) {
-                                    setState(() {
-                                      _isBottomBarActive = false;
-                                      _isBottomBarSuperActive = false;
-                                    });                                 
-                                  }                              
-                                },
-                                onVerticalDragUpdate: (details) {
-                                  if (details.localPosition.dy > 50) {
-                                    setState(() {
-                                      _isBottomBarActive = false;
-                                      _isBottomBarSuperActive = false;
-                                    });
-                                  }
-                
-                                  if (details.localPosition.dy < 0 ) {
-                                    setState(() {
-                                      _isBottomBarActive = true;
-                                      _isBottomBarSuperActive = false;
-                                    });
-                                  }
-                                },                            
-                                child: SizedBox(
-                                  width: settingsState.playAreaSize.width,
-                                  height: 60,
-                                  child: Center(
-                                    child: Container(
-                                      width: settingsState.playAreaSize.width - 140,
-                                      height: 60,
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: Helpers().displayTargetObstacles(gamePlayState, settingsState.playAreaSize.width - 140.0),
+                                print("tapped while game is active");
+                                gamePlayState.setIsGameActive(false);
+                                gamePlayState.restartGame();
+                                // gamePlayState.setBoundaryData(gamePlayState.boundaryData);
+                                gamePlayState.pauseGame();
+                                int currentLevel = gamePlayState.levelKey!; // Retrieve the current level key
+                                int currentCampaign = gamePlayState.campaignKey!;
+                                General().initializeGame(context, currentCampaign, currentLevel, settingsState, gamePlayState,settings);                            
+                                
+                                
+                                // General().initializeGame(context, gamePlayState.levelKey!, settingsState, gamePlayState);
+                              } else {
+                                print("tapped while game is not active");
+                              }
+                            },
+                            
+                            child: Container(
+                              // color: Colors.orange,
+                              width: settingsState.playAreaSize.width,
+                              height: settingsState.playAreaSize.height,
+                              child: Builder(
+                                builder: (context) {
+                                  if (gamePlayState.isDragStart) {
+                                    return CustomPaint(
+                                      painter: WindupPainter(gamePlayState: gamePlayState),
+                                    );
+                                  } else if (gamePlayState.isDragEnd) {
+                                    return CustomPaint(
+                                      painter: LiveGamePainter(gamePlayState: gamePlayState),
+                                    );                                      
+                                  } else {
+                                    return CustomPaint(
+                                      painter: StartingStatePainter(
+                                        gamePlayState: gamePlayState, 
+                                        settingsState: settingsState,
+                                        startingAnimation: gameStartedAnimation
                                       ),
-                                    ),
-                                  ),
-                                ),
+                                    );
+                                  }
+                                }
+                              )
+                            ),
+                          ),
+                    
+                        ),
+                    
+                        // Positioned(
+                        //   bottom: 0,
+                        //   child: AnimatedContainer(
+                        //     duration: const Duration(milliseconds: 200),
+                        //     decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.only(
+                        //         topLeft: _isBottomBarActive ? Radius.circular(25.0) : Radius.circular(0.0),
+                        //         topRight: _isBottomBarActive ? Radius.circular(25.0) : Radius.circular(0.0),
+                        //       ),
+                        //       color: const Color.fromARGB(255, 238, 231, 231).withOpacity(1.0),
+                        //     ),
+                        //     width: settingsState.playAreaSize.width,
+                        //     // height: getBottomBarHeight(_isBottomBarActive, gamePlayState, settingsState.playAreaSize.height),
+                        //     // height: _isBottomBarActive ? 200.0 : 60.0,
+                        //     height: getBottomBarHeight(_isBottomBarActive, _isBottomBarSuperActive),
+                        //     child: Stack(
+                        //       children: [
+                    
+                        //         Positioned(
+                        //           left: 10,
+                        //           top: 0,
+                        //           child: SizedBox(
+                        //             height: 40,
+                        //             width: 60,
+                                    
+                        //             child: Center(
+                        //               child: Container(
+                        //                 decoration: BoxDecoration(
+                        //                   border: Border.all(width: 2.0, color: const Color.fromARGB(164, 39, 39, 39)),
+                        //                   borderRadius: BorderRadius.all(Radius.circular(100.0)),
+                        //                 ),
+                        //                 width: 30,
+                        //                 height: 30,
+                        //                 child: Center(
+                        //                   child: Text(
+                        //                     gamePlayState.levelKey.toString()
+                        //                   )
+                        //                 )
+                        //               ),
+                        //             )
+                        //           )
+                        //         ),
+                    
+                        //         Positioned(
+                        //           top: 0,
+                        //           child: GestureDetector(
+                        //             onTap: () {
+                        //               if (_isBottomBarActive && !_isBottomBarSuperActive) {
+                        //                 setState(() {
+                        //                   _isBottomBarActive = true;
+                        //                   _isBottomBarSuperActive = true;
+                        //                 });                                
+                        //               }
+                    
+                        //               else if (!_isBottomBarActive && !_isBottomBarSuperActive) {
+                        //                 setState(() {
+                        //                   _isBottomBarActive = true;
+                        //                   _isBottomBarSuperActive = false;
+                        //                 });                                 
+                        //               }
+                    
+                        //               else if (_isBottomBarActive && _isBottomBarSuperActive) {
+                        //                 setState(() {
+                        //                   _isBottomBarActive = false;
+                        //                   _isBottomBarSuperActive = false;
+                        //                 });                                 
+                        //               }                              
+                        //             },
+                        //             onVerticalDragUpdate: (details) {
+                        //               if (details.localPosition.dy > 50) {
+                        //                 setState(() {
+                        //                   _isBottomBarActive = false;
+                        //                   _isBottomBarSuperActive = false;
+                        //                 });
+                        //               }
+                    
+                        //               if (details.localPosition.dy < 0 ) {
+                        //                 setState(() {
+                        //                   _isBottomBarActive = true;
+                        //                   _isBottomBarSuperActive = false;
+                        //                 });
+                        //               }
+                        //             },                            
+                        //             child: SizedBox(
+                        //               width: settingsState.playAreaSize.width,
+                        //               height: 40,
+                        //               child: Center(
+                        //                 child: Container(
+                        //                   width: settingsState.playAreaSize.width - 140,
+                        //                   height: 40,
+                        //                   child: Row(
+                        //                     mainAxisAlignment: MainAxisAlignment.center,
+                        //                     crossAxisAlignment: CrossAxisAlignment.center,
+                        //                     children: Helpers().displayTargetObstacles(gamePlayState, settingsState.playAreaSize.width - 140.0),
+                        //                   ),
+                        //                 ),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //         ),
+                                          
+                        //         Positioned(
+                        //           right: 10,
+                        //           top: 0,
+                        //           child: Container(
+                        //             height: 40,
+                        //             width: 60,
+                        //             // color: Colors.green,
+                        //             child: IconButton(
+                        //               onPressed: () {
+                        //                 /// SCENARIO 1: ACTIVE = FALSE | SUPERACTIVE = FALSE
+                        //                 if (!_isBottomBarActive && !_isBottomBarSuperActive) {
+                        //                   print("closed -> open only to half");
+                        //                   setState(() {
+                        //                     _isBottomBarActive = true;
+                        //                     _isBottomBarSuperActive = false;
+                        //                   });
+                        //                 } else
+                                         
+                        //                 /// SCENARIO 2: ACTIVE = TRUE | SUPERACTIVE = FALSE
+                        //                 if (_isBottomBarActive && !_isBottomBarSuperActive) {
+                        //                   print("open at half - close it");
+                        //                   setState(() {
+                        //                     _isBottomBarActive = false;
+                        //                     _isBottomBarSuperActive = false;
+                        //                   });
+                        //                 }
+                                         
+                        //                 /// SCENARIO 3: ACTIVE = TRUE | SUPERACTIVE = TRUE
+                        //                 else if (_isBottomBarActive && _isBottomBarSuperActive) {
+                        //                   print("open fully - close it");
+                        //                   setState(() {
+                        //                     _isBottomBarActive = false;
+                        //                     _isBottomBarSuperActive = false;
+                        //                   });
+                        //                 } else {
+                        //                   print("what the fuck??? ");
+                        //                 }
+                        //               }, 
+                        //               icon: _isBottomBarActive ? Icon(Icons.arrow_downward) : Icon(Icons.settings)
+                        //             ),
+                        //           )
+                        //         ),
+                                          
+                        //         !_isBottomBarActive ? SizedBox() : 
+                        //         Positioned(
+                        //           top: 40,
+                        //           child: Padding(
+                        //             padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        //             child: Container(
+                        //               height: getBottomBarContentHeight(_isBottomBarSuperActive),
+                        //               // color: Colors.orange,
+                        //               child: SingleChildScrollView(
+                        //                 controller: _scrollController,
+                        //                 child: Column(
+                        //                   children: [
+                        //                       mainMenuButton(
+                        //                         "Main Menu",
+                        //                         Icons.home,
+                        //                         // () => goToMainMenu()
+                        //                         () => General().navigateToMainMenu(context, gamePlayState)
+                        //                       ),                                      
+                        //                     // Container(
+                        //                     //   height: 140,
+                        //                     //   color: Colors.green,
+                        //                     //   width: 300,
+                        //                     // ),
+                    
+                        //                     // Container(
+                        //                     //   height: 50,
+                        //                     //   color: Colors.blue,
+                        //                     //   width: 300,
+                        //                     // ),
+                    
+                    
+                        //                     // Container(
+                        //                     //   height: 170,
+                        //                     //   color: Colors.yellow,
+                        //                     //   width: 300,
+                        //                     // ),
+                    
+                    
+                        //                     // Container(
+                        //                     //   height: 100,
+                        //                     //   color: Colors.red,
+                        //                     //   width: 300,
+                        //                     // ),                                                                        
+                        //                     // mainMenuButton(
+                        //                     //   "Main Menu",
+                        //                     //   Icons.home,
+                        //                     //   () => goToMainMenu()
+                        //                     // ),  
+                                        
+                        //                     // mainMenuButton(
+                        //                     //   "How to Play",
+                        //                     //   Icons.home,
+                        //                     //   () => goToMainMenu()
+                        //                     // ),  
+                                        
+                        //                     // mainMenuButton(
+                        //                     //   "Settings",
+                        //                     //   Icons.home,
+                        //                     //   () => goToMainMenu()
+                        //                     // ), 
+                                        
+                        //                     // mainMenuButton(
+                        //                     //   "Skip Level",
+                        //                     //   Icons.home,
+                        //                     //   () => goToMainMenu()
+                        //                     // ),  
+                                        
+                        //                     // mainMenuButton(
+                        //                     //   "Hint",
+                        //                     //   Icons.home,
+                        //                     //   () => goToMainMenu()
+                        //                     // ),                                                                                                                                                                          
+                                        
+                        //                   ],
+                        //                 ),
+                        //               ),
+                        //             ),
+                        //           )
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   )
+                        // ),
+                        Positioned(
+                          top: -2,
+                          left: 0,
+                          child: Container(
+                            width: settingsState.screenSize.width,
+                            height: 1,
+                            color: Colors.black,
+                    
+                          ),
+                        )
+                      ],
+                    ),
+                    // Positioned(
+                    //   bottom: 0,
+                      Container(
+                        height: 60,
+                        width: settingsState.playAreaSize.width*0.9,
+                        // color: Colors.red,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              height: 40,
+                              width: 40,
+                              color: Colors.yellow,
+                            ),
+                            Row(
+                              
+                              children: Helpers().displayTargetObstacles(gamePlayState, settingsState.playAreaSize.width - 140.0),
+                            ),
+                            Container(
+                              color: Colors.blue,
+                              height: 40,
+                              width: 40,
+                              child: IconButton(
+                                onPressed: () {
+                                  showDialog(
+                                    context: context, 
+                                    builder: (context) {
+                                      return Dialog(
+                                        backgroundColor: const Color.fromARGB(255, 63, 62, 62),
+                                        child: Container(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(22.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                // Text("Help"),
+                                                // Divider(thickness: 1.0, color: Colors.white,),
+                                                Text(
+                                                  "How to play: ",
+                                                  style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Colors.white
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "Hit the jewels in the order given at the bottom of the screen.",
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.white
+                                                  ),                                                  
+                                                ),
+                                                Divider(thickness: 1.0, color: Colors.white,),
+                                                
+                                            
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  );
+                                }, 
+                                icon: const Icon(
+                                  Icons.help,
+                                  size: 25,
+                                )
                               ),
-                            ),
-                                      
-                            Positioned(
-                              right: 10,
-                              top: 0,
-                              child: Container(
-                                height: 60,
-                                width: 60,
-                                // color: Colors.green,
-                                child: IconButton(
-                                  onPressed: () {
-                                    /// SCENARIO 1: ACTIVE = FALSE | SUPERACTIVE = FALSE
-                                    if (!_isBottomBarActive && !_isBottomBarSuperActive) {
-                                      print("closed -> open only to half");
-                                      setState(() {
-                                        _isBottomBarActive = true;
-                                        _isBottomBarSuperActive = false;
-                                      });
-                                    } else
-                                     
-                                    /// SCENARIO 2: ACTIVE = TRUE | SUPERACTIVE = FALSE
-                                    if (_isBottomBarActive && !_isBottomBarSuperActive) {
-                                      print("open at half - close it");
-                                      setState(() {
-                                        _isBottomBarActive = false;
-                                        _isBottomBarSuperActive = false;
-                                      });
-                                    }
-                                     
-                                    /// SCENARIO 3: ACTIVE = TRUE | SUPERACTIVE = TRUE
-                                    else if (_isBottomBarActive && _isBottomBarSuperActive) {
-                                      print("open fully - close it");
-                                      setState(() {
-                                        _isBottomBarActive = false;
-                                        _isBottomBarSuperActive = false;
-                                      });
-                                    } else {
-                                      print("what the fuck??? ");
-                                    }
-                                  }, 
-                                  icon: _isBottomBarActive ? Icon(Icons.arrow_downward) : Icon(Icons.settings)
-                                ),
-                              )
-                            ),
-                                      
-                            !_isBottomBarActive ? SizedBox() : 
-                            Positioned(
-                              top: 60,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                                child: Container(
-                                  height: getBottomBarContentHeight(_isBottomBarSuperActive),
-                                  // color: Colors.orange,
-                                  child: SingleChildScrollView(
-                                    controller: _scrollController,
-                                    child: Column(
-                                      children: [
-                                          mainMenuButton(
-                                            "Main Menu",
-                                            Icons.home,
-                                            // () => goToMainMenu()
-                                            () => General().navigateToMainMenu(context, gamePlayState)
-                                          ),                                      
-                                        // Container(
-                                        //   height: 140,
-                                        //   color: Colors.green,
-                                        //   width: 300,
-                                        // ),
-                
-                                        // Container(
-                                        //   height: 50,
-                                        //   color: Colors.blue,
-                                        //   width: 300,
-                                        // ),
-                
-                
-                                        // Container(
-                                        //   height: 170,
-                                        //   color: Colors.yellow,
-                                        //   width: 300,
-                                        // ),
-                
-                
-                                        // Container(
-                                        //   height: 100,
-                                        //   color: Colors.red,
-                                        //   width: 300,
-                                        // ),                                                                        
-                                        // mainMenuButton(
-                                        //   "Main Menu",
-                                        //   Icons.home,
-                                        //   () => goToMainMenu()
-                                        // ),  
-                                    
-                                        // mainMenuButton(
-                                        //   "How to Play",
-                                        //   Icons.home,
-                                        //   () => goToMainMenu()
-                                        // ),  
-                                    
-                                        // mainMenuButton(
-                                        //   "Settings",
-                                        //   Icons.home,
-                                        //   () => goToMainMenu()
-                                        // ), 
-                                    
-                                        // mainMenuButton(
-                                        //   "Skip Level",
-                                        //   Icons.home,
-                                        //   () => goToMainMenu()
-                                        // ),  
-                                    
-                                        // mainMenuButton(
-                                        //   "Hint",
-                                        //   Icons.home,
-                                        //   () => goToMainMenu()
-                                        // ),                                                                                                                                                                          
-                                    
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ),
+                            ),                                                        
                           ],
                         ),
                       )
-                    ),
-                    Positioned(
-                      top: -2,
-                      left: 0,
-                      child: Container(
-                        width: settingsState.screenSize.width,
-                        height: 1,
-                        color: Colors.black,
-
-                      ),
-                    )
+                    // ),                    
                   ],
                 );
               }
@@ -529,7 +607,7 @@ void goToMainMenu(BuildContext conte) {
 
 
 double getBottomBarHeight(bool isBottomBarActive, bool isBottomBarSuperActive) {
-  late double res = 60.0;
+  late double res = 40.0;
   if (isBottomBarActive) {
     if (isBottomBarSuperActive) {
       res = 400.0;

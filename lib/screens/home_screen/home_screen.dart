@@ -31,7 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
       // getting the dimentions of the screen and setting the play area height 
       // final AppBar appBar = AppBar();
       final double paddingTop = MediaQuery.of(context).padding.top;
-      const double controlBarHeight = 60.0;
+      print("padding top: $paddingTop");
+      const double controlBarHeight = 100.0;
       final double screenHeight = MediaQuery.of(context).size.height - paddingTop;
       final double screenWidth = MediaQuery.of(context).size.width;
       final Size screenSize = Size(screenWidth,screenHeight);
