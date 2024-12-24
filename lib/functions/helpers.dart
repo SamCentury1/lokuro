@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:lokuro/models/level_model.dart';
 import 'package:lokuro/providers/game_play_state.dart';
 import 'package:lokuro/providers/settings_state.dart';
 
@@ -770,6 +771,42 @@ class Helpers {
     gamePlayState.setHitBoundaries(hitBoundaries);
   }
 
+  double getPercentCampaignCompleteBarWidth(GamePlayState gamePlayState,SettingsState settingsState) {
+    int currentLevel = gamePlayState.levelKey!;
+    int levelCount = gamePlayState.currentCampaignState.levels.length;
+    double complete = (currentLevel/levelCount)*settingsState.playAreaSize.width;
+    complete;
+    return complete;
+  }
+
+  Map<int,int> getMapOfCollectedGems(GamePlayState gamePlayState) {
+    List<int> allGems = [];
+    List<int> uniqueGems = [];
+    int currentLevel = gamePlayState.levelKey!;
+    for (int i=0; i<gamePlayState.currentCampaignState.levels.length; i++) {
+      var order = gamePlayState.currentCampaignState.levels[i]["order"];
+      for (int number in order) {
+        if (!uniqueGems.contains(number)) {
+          uniqueGems.add(number);
+        }
+
+        if (i < currentLevel) {
+          allGems.add(number);
+        }
+      }
+    }
+
+    Map<int,int> counts = {};
+    for (int number in uniqueGems) {
+      counts[number] = (counts[number] ?? 0) + 0;
+    }
+
+    for (int number in allGems) {
+      counts[number] = (counts[number] ?? 0) + 1;
+    }
+
+    return counts;
+  }
 
 
 }

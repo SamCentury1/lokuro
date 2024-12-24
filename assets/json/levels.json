@@ -387,5 +387,76 @@
             {"order": [1, 1, 6, 2], "background": 5, "obstacles": [{"key": 1, "origin": [49.99, 15.71], "isCircle": false, "colorKey": 1, "active": true, "data": [{"key": 0, "distance": 15.97, "angle": 0.68}, {"key": 1, "distance": 16.59, "angle": 53.7}, {"key": 2, "distance": 16.19, "angle": 103.47}, {"key": 3, "distance": 14.68, "angle": 151.07}, {"key": 4, "distance": 16.2, "angle": 207.43}, {"key": 5, "distance": 15.55, "angle": 260.26}, {"key": 6, "distance": 17.03, "angle": 304.3}]}, {"key": 2, "origin": [65.78, 67.34], "isCircle": false, "colorKey": 1, "active": true, "data": [{"key": 0, "distance": 15.95, "angle": 1.78}, {"key": 1, "distance": 14.01, "angle": 91.47}, {"key": 2, "distance": 14.71, "angle": 175.21}, {"key": 3, "distance": 14.91, "angle": 269.74}]}, {"key": 3, "origin": [35.65, 59.54], "isCircle": true, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 15.13, "angle": 0.0}]}, {"key": 4, "origin": [76.99, 26.83], "isCircle": false, "colorKey": 2, "active": true, "data": [{"key": 0, "distance": 15.63, "angle": 9.14}, {"key": 1, "distance": 17.23, "angle": 115.81}, {"key": 2, "distance": 15.6, "angle": 244.41}]}], "boundaries": [], "levelId": 26}, 
             {"order": [6, 3, 6, 6], "background": 1, "obstacles": [{"key": 1, "origin": [81.53, 31.55], "isCircle": true, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 15.91, "angle": 0.0}]}, {"key": 2, "origin": [37.13, 46.07], "isCircle": false, "colorKey": 3, "active": true, "data": [{"key": 0, "distance": 16.72, "angle": 4.23}, {"key": 1, "distance": 15.93, "angle": 69.01}, {"key": 2, "distance": 14.39, "angle": 142.0}, {"key": 3, "distance": 16.27, "angle": 219.98}, {"key": 4, "distance": 17.2, "angle": 290.17}]}, {"key": 3, "origin": [65.93, 79.71], "isCircle": false, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 14.6, "angle": 1.71}, {"key": 1, "distance": 14.48, "angle": 55.07}, {"key": 2, "distance": 15.69, "angle": 104.52}, {"key": 3, "distance": 15.26, "angle": 154.64}, {"key": 4, "distance": 16.68, "angle": 205.73}, {"key": 5, "distance": 14.07, "angle": 261.04}, {"key": 6, "distance": 16.43, "angle": 307.11}]}, {"key": 4, "origin": [29.93, 77.4], "isCircle": false, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 15.04, "angle": 5.57}, {"key": 1, "distance": 15.09, "angle": 63.59}, {"key": 2, "distance": 14.44, "angle": 123.06}, {"key": 3, "distance": 14.98, "angle": 184.51}, {"key": 4, "distance": 17.54, "angle": 237.25}, {"key": 5, "distance": 16.78, "angle": 302.11}]}], "boundaries": [], "levelId": 27}, 
             {"order": [3, 2, 2, 6], "background": 9, "obstacles": [{"key": 1, "origin": [59.88, 43.81], "isCircle": false, "colorKey": 3, "active": true, "data": [{"key": 0, "distance": 16.63, "angle": 1.84}, {"key": 1, "distance": 14.61, "angle": 60.85}, {"key": 2, "distance": 15.31, "angle": 118.56}, {"key": 3, "distance": 17.05, "angle": 180.51}, {"key": 4, "distance": 14.32, "angle": 243.19}, {"key": 5, "distance": 17.16, "angle": 300.86}]}, {"key": 2, "origin": [19.66, 42.87], "isCircle": false, "colorKey": 2, "active": true, "data": [{"key": 0, "distance": 14.69, "angle": 2.13}, {"key": 1, "distance": 16.04, "angle": 52.86}, {"key": 2, "distance": 16.33, "angle": 107.84}, {"key": 3, "distance": 14.79, "angle": 157.9}, {"key": 4, "distance": 16.74, "angle": 202.61}, {"key": 5, "distance": 16.59, "angle": 261.14}, {"key": 6, "distance": 15.01, "angle": 312.76}]}, {"key": 3, "origin": [82.61, 20.76], "isCircle": false, "colorKey": 2, "active": true, "data": [{"key": 0, "distance": 17.29, "angle": 0.84}, {"key": 1, "distance": 15.44, "angle": 47.65}, {"key": 2, "distance": 14.21, "angle": 106.9}, {"key": 3, "distance": 16.96, "angle": 158.44}, {"key": 4, "distance": 14.69, "angle": 209.62}, {"key": 5, "distance": 14.2, "angle": 260.55}, {"key": 6, "distance": 15.16, "angle": 306.68}]}, {"key": 4, "origin": [50.38, 72.61], "isCircle": false, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 15.31, "angle": 0.57}, {"key": 1, "distance": 15.39, "angle": 122.78}, {"key": 2, "distance": 16.54, "angle": 235.47}]}], "boundaries": [], "levelId": 28}, 
-            {"order": [1, 1, 5, 3], "background": 8, "obstacles": [{"key": 1, "origin": [38.49, 76.54], "isCircle": false, "colorKey": 1, "active": true, "data": [{"key": 0, "distance": 16.51, "angle": 3.54}, {"key": 1, "distance": 14.43, "angle": 42.72}, {"key": 2, "distance": 15.23, "angle": 88.99}, {"key": 3, "distance": 16.17, "angle": 134.31}, {"key": 4, "distance": 15.8, "angle": 177.29}, {"key": 5, "distance": 17.76, "angle": 220.08}, {"key": 6, "distance": 14.29, "angle": 266.79}, {"key": 7, "distance": 17.74, "angle": 315.89}]}, {"key": 2, "origin": [65.47, 34.45], "isCircle": false, "colorKey": 1, "active": true, "data": [{"key": 0, "distance": 15.24, "angle": 4.67}, {"key": 1, "distance": 14.91, "angle": 60.19}, {"key": 2, "distance": 14.41, "angle": 119.95}, {"key": 3, "distance": 16.18, "angle": 181.09}, {"key": 4, "distance": 17.08, "angle": 242.47}, {"key": 5, "distance": 14.05, "angle": 299.92}]}, {"key": 3, "origin": [25.93, 44.89], "isCircle": false, "colorKey": 5, "active": true, "data": [{"key": 0, "distance": 14.93, "angle": 9.27}, {"key": 1, "distance": 14.1, "angle": 71.6}, {"key": 2, "distance": 17.52, "angle": 140.46}, {"key": 3, "distance": 15.21, "angle": 216.99}, {"key": 4, "distance": 14.47, "angle": 291.89}]}, {"key": 4, "origin": [82.36, 72.96], "isCircle": false, "colorKey": 3, "active": true, "data": [{"key": 0, "distance": 16.58, "angle": 4.63}, {"key": 1, "distance": 15.25, "angle": 118.4}, {"key": 2, "distance": 16.8, "angle": 239.03}]}], "boundaries": [], "levelId": 29}]}
+            {"order": [1, 1, 5, 3], "background": 8, "obstacles": [{"key": 1, "origin": [38.49, 76.54], "isCircle": false, "colorKey": 1, "active": true, "data": [{"key": 0, "distance": 16.51, "angle": 3.54}, {"key": 1, "distance": 14.43, "angle": 42.72}, {"key": 2, "distance": 15.23, "angle": 88.99}, {"key": 3, "distance": 16.17, "angle": 134.31}, {"key": 4, "distance": 15.8, "angle": 177.29}, {"key": 5, "distance": 17.76, "angle": 220.08}, {"key": 6, "distance": 14.29, "angle": 266.79}, {"key": 7, "distance": 17.74, "angle": 315.89}]}, {"key": 2, "origin": [65.47, 34.45], "isCircle": false, "colorKey": 1, "active": true, "data": [{"key": 0, "distance": 15.24, "angle": 4.67}, {"key": 1, "distance": 14.91, "angle": 60.19}, {"key": 2, "distance": 14.41, "angle": 119.95}, {"key": 3, "distance": 16.18, "angle": 181.09}, {"key": 4, "distance": 17.08, "angle": 242.47}, {"key": 5, "distance": 14.05, "angle": 299.92}]}, {"key": 3, "origin": [25.93, 44.89], "isCircle": false, "colorKey": 5, "active": true, "data": [{"key": 0, "distance": 14.93, "angle": 9.27}, {"key": 1, "distance": 14.1, "angle": 71.6}, {"key": 2, "distance": 17.52, "angle": 140.46}, {"key": 3, "distance": 15.21, "angle": 216.99}, {"key": 4, "distance": 14.47, "angle": 291.89}]}, {"key": 4, "origin": [82.36, 72.96], "isCircle": false, "colorKey": 3, "active": true, "data": [{"key": 0, "distance": 16.58, "angle": 4.63}, {"key": 1, "distance": 15.25, "angle": 118.4}, {"key": 2, "distance": 16.8, "angle": 239.03}]}], "boundaries": [], "levelId": 29}]},
+
+            {
+                "campaignId": 9, 
+                "campaignName": "Hiddenite Gem Mines 2", 
+                "campaignDescription": "Hiddenite Gem Mines are located in a small North Carolina town famous for its unique green gemstone, hiddenite. Since its discovery in 1879, the area has become a hub for gem enthusiasts searching for emeralds, hiddenite, and sapphires. Itu2019s a historical site for American gemstone mining.", 
+                "location": "Hiddenite, North Carolina, USA",
+                "opened": "1879",
+                "stones": "Emeralds, hiddenite, sapphires",
+                "ownership": "Various private entities",        
+                "campaignPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Hiddenitecreek.jpg/250px-Hiddenitecreek.jpg", 
+                "difficulty": 2,
+                "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFf1e44e"],
+                "levels": [
+                    
+                    {
+                        "order": [5, 6], "background": 5, "obstacles": [
+                        
+                            {
+                                "key": 1, 
+                                "origin": [43.27, 74.58], 
+                                "isCircle": false, 
+                                "colorKey": 5, 
+                                "active": true, 
+                                "data": [
+                                    {"key": 0, "distance": 5.53, "angle": 5.99},
+                                    {"key": 1, "distance": 4.28, "angle": 121.6}, 
+                                    {"key": 2, "distance": 5.39, "angle": 238.12}
+                                ]
+                            }, 
+                            {
+                                "key": 2, 
+                                "origin": [44.63, 25.7], 
+                                "isCircle": false, 
+                                "colorKey": 6, 
+                                "active": true, 
+                                "data": [
+                                    {"key": 0, "distance": 5.15, "angle": 7.47}, 
+                                    {"key": 1, "distance": 5.44, "angle": 48.7}, 
+                                    {"key": 2, "distance": 7.53, "angle": 85.03}, 
+                                    {"key": 3, "distance": 5.51, "angle": 139.58}, 
+                                    {"key": 4, "distance": 7.63, "angle": 179.46}, 
+                                    {"key": 5, "distance": 5.27, "angle": 224.23}, 
+                                    {"key": 6, "distance": 6.45, "angle": 269.72}, 
+                                    {"key": 7, "distance": 7.48, "angle": 317.62}]}
+                        ], 
+                            
+                        
+                        "boundaries": [], 
+                        "levelId": 0
+                    }, 
+                        
+                    {"order": [6, 3], "background": 1, "obstacles": [
+                        
+                        {"key": 1, "origin": [79.1, 58.85], "isCircle": false, "colorKey": 6, "active": true, "data": [
+                            {"key": 0, "distance": 17.75, "angle": 3.57}, 
+                            {"key": 1, "distance": 16.62, "angle": 47.72}, 
+                            {"key": 2, "distance": 16.6, "angle": 92.88}, 
+                            {"key": 3, "distance": 14.02, "angle": 133.33}, 
+                            {"key": 4, "distance": 14.4, "angle": 181.44}, 
+                            {"key": 5, "distance": 15.96, "angle": 227.15}, 
+                            {"key": 6, "distance": 15.82, "angle": 273.75}, 
+                            {"key": 7, "distance": 14.21, "angle": 319.19}]}, 
+                        {"key": 2, "origin": [60.12, 84.45], "isCircle": false, "colorKey": 3, "active": true, "data": [
+                        {"key": 0, "distance": 16.56, "angle": 2.86}, 
+                        {"key": 1, "distance": 15.15, "angle": 117.3}, 
+                        {"key": 2, "distance": 14.41, "angle": 241.71}]}], "boundaries": [], "levelId": 1}, 
+                    {"order": [3, 5], "background": 4, "obstacles": [
+                        {"key": 1, "origin": [68.9, 25.53], "isCircle": false, "colorKey": 3, "active": true, "data": [
+                        {"key": 0, "distance": 16.71, "angle": 3.59}, {"key": 1, "distance": 15.57, "angle": 67.63}, {"key": 2, "distance": 17.93, "angle": 139.41}, {"key": 3, "distance": 17.82, "angle": 219.28}, {"key": 4, "distance": 15.79, "angle": 292.94}]}, {"key": 2, "origin": [22.25, 70.64], "isCircle": false, "colorKey": 5, "active": true, "data": [{"key": 0, "distance": 14.31, "angle": 7.0}, {"key": 1, "distance": 14.75, "angle": 40.46}, {"key": 2, "distance": 17.35, "angle": 85.58}, {"key": 3, "distance": 17.56, "angle": 134.93}, {"key": 4, "distance": 17.08, "angle": 176.38}, {"key": 5, "distance": 14.23, "angle": 225.82}, {"key": 6, "distance": 17.53, "angle": 270.04}, {"key": 7, "distance": 17.08, "angle": 316.46}]}], "boundaries": [], "levelId": 2} 
+                    ]
+                }            
 ]

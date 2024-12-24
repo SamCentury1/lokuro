@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:lokuro/components/gem_painter.dart';
 import 'package:lokuro/functions/game_logic.dart';
 import 'package:lokuro/functions/general.dart';
 import 'package:lokuro/functions/helpers.dart';
@@ -114,14 +115,60 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
       minimum: EdgeInsets.only(bottom: 0.5),
       child: Consumer<GamePlayState>(
         builder: (context,gamePlayState,child) {
+
+          // Helpers().getMapOfCollectedGems(gamePlayState);
           return Scaffold(
             // backgroundColor: const Color.fromARGB(255, 219, 219, 219),
             backgroundColor: Colors.black,
             body: AnimatedBuilder(
               animation: gameStartedController,
               builder: (context,child) {
+
+                // Map<int,int> mapOfCollectedGems = Helpers().getMapOfCollectedGems(gamePlayState);
+                
+                // getCollectedGems
                 return Column(
+                  
                   children: [
+                    Container(
+                      width: settingsState.playAreaSize.width,
+                      height: 30,
+                      // color: Colors.red,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 5,
+                            child: Row(
+                              children: [
+                                AnimatedContainer(
+                                  duration: const Duration(milliseconds: 1500),
+                                  width: Helpers().getPercentCampaignCompleteBarWidth(gamePlayState,settingsState),
+                                  height: 5,
+                                  color: Colors.white,
+                                ),                              
+                              ],
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 80,
+                                height: 10,
+                                color: Colors.yellow,
+                              ),
+                              Container(
+                                // color: Colors.orange,
+                                child: Row(
+                                  children : getCollectedGems(gamePlayState),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                     Stack(
                       children: [
                         SizedBox(
@@ -474,7 +521,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                     // Positioned(
                     //   bottom: 0,
                       Container(
-                        height: 60,
+                        height: 40,
                         width: settingsState.playAreaSize.width*0.9,
                         // color: Colors.red,
                         child: Row(
@@ -523,7 +570,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                                                   ),                                                  
                                                 ),
                                                 Divider(thickness: 1.0, color: Colors.white,),
-                                                
+
                                             
                                               ],
                                             ),
@@ -626,4 +673,35 @@ double getBottomBarContentHeight(bool isBottomBarSuperActive) {
   }
   return res;
 }
+
+List<Widget> getCollectedGems(GamePlayState gamePlayState) {
+  Map<int,int> mapCollectedGems = Helpers().getMapOfCollectedGems(gamePlayState);
+  List<Widget> widgets = [];
+  print("map = $mapCollectedGems");
+  for (var entry in mapCollectedGems.entries) {
+    Color color = gamePlayState.colors[entry.key];
+    Widget item = Row(
+      children: [
+        Container(
+          width: 25,
+          height: 25,
+          child: CustomPaint(
+            painter: GemPainter1(color: color),
+          ),
+        ),
+        SizedBox(width: 3,),
+        Text(
+          entry.value.toString(),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 12
+          ),
+        ),
+        SizedBox(width: 10,)
+      ],
+    );
+    widgets.add(item);
+  }
+  return widgets;
+} 
 
