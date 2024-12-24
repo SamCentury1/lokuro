@@ -103,6 +103,8 @@ class WindupPainter extends CustomPainter {
       }
     }
 
+  
+
 
     // point sizes
     // final double dot = size.width*0.01;
@@ -125,6 +127,11 @@ class WindupPainter extends CustomPainter {
     for (Offset stop in targetPath) {
       canvas.drawCircle(stop, 1.0, targetPaint);
     }
+
+
+    // draw the ball
+    final double dot = size.width * 0.01;
+    canvas.drawCircle(startPoint!, dot, targetPaint);      
 
   }
 

@@ -171,12 +171,13 @@ void initializeGame(
 
 
 
-  Map<String,dynamic> getAdjacents(Offset previousPoint,Offset currentPoint,Offset nextPoint, int index) {
-    double x1 = currentPoint.dx + 0.1 * (previousPoint.dx - currentPoint.dx);
-    double y1 = currentPoint.dy + 0.1 * (previousPoint.dy - currentPoint.dy);
+  Map<String,dynamic> getAdjacents(Offset previousPoint,Offset currentPoint,Offset nextPoint, int index, double gap) {
 
-    double x2 = currentPoint.dx + 0.1 * (nextPoint.dx - currentPoint.dx);
-    double y2 = currentPoint.dy + 0.1 * (nextPoint.dy - currentPoint.dy);
+    double x1 = currentPoint.dx + gap * (previousPoint.dx - currentPoint.dx);
+    double y1 = currentPoint.dy + gap * (previousPoint.dy - currentPoint.dy);
+
+    double x2 = currentPoint.dx + gap * (nextPoint.dx - currentPoint.dx);
+    double y2 = currentPoint.dy + gap * (nextPoint.dy - currentPoint.dy);
 
     final Offset previous = Offset(x1,y1);
     final Offset next = Offset(x2, y2);
@@ -186,7 +187,7 @@ void initializeGame(
 
 
   // List<Map<String,dynamic>> getOffsets(Offset origin, List<Map<String,dynamic>> points, Size size, double distanceFactor) {
-  List<Map<String,dynamic>> getOffsets(Offset origin, List<dynamic> points, Size size, double distanceFactor) {
+  List<Map<String,dynamic>> getOffsets(Offset origin, List<dynamic> points, Size size, double distanceFactor, double innerJewelGap, double cornerGap ) {
     List<Map<String,dynamic>> res = [];
 
     for (int index=0; index<points.length; index++) {
@@ -200,14 +201,14 @@ void initializeGame(
       final Offset currentPoint = getCoordinatesFromDistanceAndAngle(origin, point1, size,distanceFactor);
       final Offset nextPoint = getCoordinatesFromDistanceAndAngle(origin, point2, size,distanceFactor);      
 
-      final Map<String,dynamic> adjacents = getAdjacents(previousPoint,currentPoint,nextPoint,index);
+      final Map<String,dynamic> adjacents = getAdjacents(previousPoint,currentPoint,nextPoint,index,cornerGap);
       res.add(adjacents);
     }
     return res;
   }
 
   // List<Map<String,dynamic>> getAnimatingPolygonOffsets(Offset origin, List<Map<String,dynamic>> points, Size size, double progress) {
-  List<Map<String,dynamic>> getAnimatingPolygonOffsets(Offset origin, List<dynamic> points, Size size, double progress) {
+  List<Map<String,dynamic>> getAnimatingPolygonOffsets(Offset origin, List<dynamic> points, Size size, double progress, double cornerGap) {
     List<Map<String,dynamic>> res = [];
 
     for (int index=0; index<points.length; index++) {
@@ -239,7 +240,7 @@ void initializeGame(
       final Offset currentPoint = getCoordinatesFromDistanceAndAngle(origin, point1, size, (1.0 + (0.5 *progress)));
       final Offset nextPoint = getCoordinatesFromDistanceAndAngle(origin, point2, size, (1.0 + (0.5 *progress)));      
 
-      final Map<String,dynamic> adjacents = getAdjacents(previousPoint,currentPoint,nextPoint,index);
+      final Map<String,dynamic> adjacents = getAdjacents(previousPoint,currentPoint,nextPoint,index,cornerGap);
       res.add(adjacents);
     }
     return res;
@@ -282,7 +283,7 @@ void initializeGame(
     //     obstaclePath.lineTo(point.dx, point.dy);
     //   }
     // } else {
-      List<Map<String,dynamic>> allPoints = getOffsets(origin2, obstacle["data"],size, 1.0);
+      List<Map<String,dynamic>> allPoints = getOffsets(origin2, obstacle["data"],size, 1.0, obstacle["innerJewelSize"], obstacle["jewelCornerSize"]);
       Map<String,dynamic> firstPoints = allPoints[0];
       obstaclePath.moveTo(firstPoints["previous"].dx,firstPoints["previous"].dy);
       obstaclePath.quadraticBezierTo(
@@ -323,7 +324,7 @@ void initializeGame(
     //   }
     // } else {
       
-      List<Map<String,dynamic>> allPoints = getOffsets(origin, obstacle["data"],size, 1.0);
+      List<Map<String,dynamic>> allPoints = getOffsets(origin, obstacle["data"],size, 1.0,obstacle["innerJewelSize"],obstacle["jewelCornerSize"]);
       Map<String,dynamic> firstPoints = allPoints[0];
       obstaclePath.moveTo(firstPoints["previous"].dx,firstPoints["previous"].dy);
       obstaclePath.quadraticBezierTo(
@@ -360,7 +361,7 @@ void initializeGame(
     //   }
     // } else {
       final Offset origin = getOrigin(obstacle, size);
-      List<Map<String,dynamic>> allPoints = getAnimatingPolygonOffsets(origin, obstacle["data"],size,progress);
+      List<Map<String,dynamic>> allPoints = getAnimatingPolygonOffsets(origin, obstacle["data"],size,progress, 0.05);
       Map<String,dynamic> firstPoints = allPoints[0];
       obstaclePath.moveTo(firstPoints["previous"].dx,firstPoints["previous"].dy);
       obstaclePath.quadraticBezierTo(
@@ -451,10 +452,13 @@ void initializeGame(
 
 
   List<Map<String,dynamic>> addPathToObstacles(List<Map<String,dynamic>> obstacles, Size size,) {
+    final Random random = Random();
     for (int i=0; i<obstacles.length; i++) {
       if (i != 0) {
         late Map<String,dynamic> obstacle = obstacles[i];
         final Offset origin = getOrigin(obstacle, size);
+        final double innerJewelSize = (random.nextInt(30)+30)/100;
+        final double jewelCornerSize = (random.nextInt(10)+5)/100;
 
         
         if (obstacle["isCircle"]) {
@@ -467,7 +471,8 @@ void initializeGame(
           final Offset pointOffset = getCoordinatesFromDistanceAndAngle(origin, point, size, 1.0);
           points.add(pointOffset);
         }
-
+        obstacles[i]["innerJewelSize"] = innerJewelSize;
+        obstacles[i]["jewelCornerSize"] = jewelCornerSize;
         obstacles[i]["points"] = points;
         Path shapeData = getShapeData(origin, obstacles[i],size);
         obstacles[i]["path"] = shapeData;
@@ -543,8 +548,10 @@ void initializeGame(
 
     // get the points of the shape outer shape, and n smaller
     // final Offset origin = getOrigin(obstacle,size);
-    List<Map<String,dynamic>> innerShapePoints = getOffsets(origin, obstacle["data"], size, sizeFactor);
-    List<Map<String,dynamic>> outerShapePoints = getOffsets(origin, obstacle["data"], size, 1.0);
+    double innerJewelGap = obstacle["innerJewelSize"];
+    double cornerGap = obstacle["jewelCornerSize"];
+    List<Map<String,dynamic>> innerShapePoints = getOffsets(origin, obstacle["data"], size, sizeFactor, innerJewelGap,cornerGap);
+    List<Map<String,dynamic>> outerShapePoints = getOffsets(origin, obstacle["data"], size, 1.0, 1.0, cornerGap);
 
     for (int index=0; index<obstacle["data"].length; index++) {
       int nextIndex = index+1 == obstacle["data"].length ? 0 : index+1;

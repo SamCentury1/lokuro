@@ -10,7 +10,7 @@
         "ownership": "Century Industries",        
         "campaignPhotoUrl": "https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1638892272/EducationHub/photos/open-pit-copper-mine.jpg", 
         "difficulty": 0,
-        "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFb5d713","0xFF458def","0xFFbc6b79","0xFFa2a3b8","0xFFaf480b","0xFF33b6e0","0xFFba830a","0xFF562eeb","0xFF291bdf","0xFF4b5a9","0xFFb133e7","0xFFaa692","0xFF3de481","0xFF241ee6","0xFFb96c94","0xFF284471","0xFF43c022","0xFF7bd9c9","0xFF9bb69a","0xFF27f3d9","0xFF8f0980"],
+        "colors": ["0xFFCEC8F7", "0xFFFEC7DC", "0xFFA0D2EE", "0xFFC7EEF4", "0xFFE8C1B9", "0xFFEB9DEE", "0xFFF9A4AF", "0xFFE3D4B5", "0xFFED98DD", "0xFFFED29B", "0xFFC5D6AD", "0xFFE3C0FC", "0xFFD8D8DF", "0xFFE7D0D8", "0xFFC7E4A5", "0xFFA6D5CA", "0xFFC6E198", "0xFFA9F8D1", "0xFFDFAEF4", "0xFFA7CFB6", "0xFFE69B9D", "0xFFC0DEBE", "0xFFDD9F9F", "0xFFF5ADFC", "0xFFDAF3E6"],
         "levels": [
             
             {"order": [3, 2], "background": 1, "obstacles": [{"key": 1, "origin": [76.82, 14.47], "isCircle": false, "colorKey": 3, "active": true, "data": [{"key": 0, "distance": 16.58, "angle": 4.89}, {"key": 1, "distance": 14.74, "angle": 116.38}, {"key": 2, "distance": 15.49, "angle": 243.24}]}, {"key": 2, "origin": [52.53, 62.14], "isCircle": false, "colorKey": 2, "active": true, "data": [{"key": 0, "distance": 17.38, "angle": 5.27}, {"key": 1, "distance": 15.46, "angle": 48.17}, {"key": 2, "distance": 17.72, "angle": 102.7}, {"key": 3, "distance": 17.89, "angle": 159.06}, {"key": 4, "distance": 16.95, "angle": 209.1}, {"key": 5, "distance": 16.63, "angle": 252.81}, {"key": 6, "distance": 15.21, "angle": 306.86}]}], "boundaries": [], "levelId": 0}, 
@@ -57,7 +57,7 @@
         "ownership": "Grimm & Finkelstein Mining Corp.",        
         "campaignPhotoUrl": "https://www.xylem.com/siteassets/industries--applications/main-images/mining-dewatering.jpg?format=webp", 
         "difficulty": 0,
-        "colors": ["0xFF67a76c","0xFF13912b","0xFF49f78d","0xFF771cbe","0xFFd475d0","0xFFcfd4cf","0xFF5721fe","0xFFff7a8","0xFFff19a9","0xFF35155a","0xFFa5b4c2","0xFF264204","0xFFf3e491","0xFF8d0e57","0xFFe28008","0xFF999f20","0xFF936a67","0xFF346eab","0xFF7677b1","0xFFa003c4","0xFF1ad4e3","0xFF9e4f6","0xFFbf8ee0","0xFF392680"],
+        "colors": ["0xFFBFA0E0", "0xFFCADEF8", "0xFF97D1E5", "0xFFCFA0BE", "0xFFC0B1F2", "0xFFB5FCA7", "0xFFF3F5D6", "0xFFA1CDBD", "0xFFBEBEBA", "0xFFFDE2F6", "0xFFAB99FC", "0xFFA7F2FE", "0xFFE9B6B4", "0xFFD7DCA4", "0xFFA697FE", "0xFF969EE7", "0xFFE2EDBF", "0xFFD4FAAF", "0xFFBE97DB", "0xFFFAE0F2", "0xFFB8B0B3", "0xFFDFA3C3", "0xFFC8E6CC", "0xFFA79CCD", "0xFFE0F9CC"],
         "levels": [
             {"order": [5, 4], "background": 8, "obstacles": [{"key": 1, "origin": [31.26, 84.64], "isCircle": false, "colorKey": 5, "active": true, "data": [{"key": 0, "distance": 14.85, "angle": 0.44}, {"key": 1, "distance": 15.84, "angle": 72.66}, {"key": 2, "distance": 14.95, "angle": 147.78}, {"key": 3, "distance": 16.49, "angle": 215.88}, {"key": 4, "distance": 14.5, "angle": 285.49}]}, {"key": 2, "origin": [55.66, 26.09], "isCircle": false, "colorKey": 4, "active": true, "data": [{"key": 0, "distance": 15.0, "angle": 6.61}, {"key": 1, "distance": 17.8, "angle": 62.73}, {"key": 2, "distance": 14.25, "angle": 121.39}, {"key": 3, "distance": 15.41, "angle": 183.18}, {"key": 4, "distance": 16.12, "angle": 235.38}, {"key": 5, "distance": 17.24, "angle": 296.57}]}], "boundaries": [], "levelId": 0}, 
             {"order": [3, 5], "background": 0, "obstacles": [{"key": 1, "origin": [70.56, 82.16], "isCircle": false, "colorKey": 3, "active": true, "data": [{"key": 0, "distance": 17.76, "angle": 9.72}, {"key": 1, "distance": 17.51, "angle": 86.34}, {"key": 2, "distance": 17.05, "angle": 175.41}, {"key": 3, "distance": 17.41, "angle": 273.63}]}, {"key": 2, "origin": [39.92, 31.21], "isCircle": false, "colorKey": 5, "active": true, "data": [{"key": 0, "distance": 17.27, "angle": 4.25}, {"key": 1, "distance": 16.78, "angle": 123.88}, {"key": 2, "distance": 17.62, "angle": 241.81}]}], "boundaries": [], "levelId": 1}, 
@@ -97,7 +97,7 @@
         "ownership": "Various private and government entities",        
         "campaignPhotoUrl": "https://www.gia.edu/images/161064_636x358.jpg", 
         "difficulty": 2,
-        "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFb5d713","0xFF458def","0xFFbc6b79","0xFFa2a3b8","0xFFaf480b","0xFF33b6e0","0xFFba830a","0xFF562eeb","0xFF291bdf","0xFF4b5a9","0xFFb133e7","0xFFaa692","0xFF3de481","0xFF241ee6","0xFFb96c94","0xFF284471","0xFF43c022","0xFF7bd9c9","0xFF9bb69a","0xFF27f3d9","0xFF8f0980"], 
+        "colors": ["0xFFACFDBB", "0xFFD4BFB6", "0xFFB8AFD8", "0xFFA4E1EA", "0xFFE597E4", "0xFFADB7D1", "0xFFCFB0A4", "0xFFCCE1ED", "0xFFFBC9AB", "0xFFC7E6E8", "0xFFCFF3B0", "0xFFB1E0C1", "0xFFC2A3DD", "0xFFCDE9A4", "0xFFADF0A1", "0xFFE4F5AA", "0xFFAAD6E1", "0xFFBF99C0", "0xFFA3B2D6", "0xFFB399F3", "0xFFA8CED4", "0xFFBFF2B0", "0xFFCBA2C1", "0xFFE6F5B2", "0xFFC0E0CA", "0xFFE0B397", "0xFFC4CCFD", "0xFFE6F4C4", "0xFFBED5E9", "0xFFB8D5A0"], 
         "levels": [
             
             {"order": [3, 2], "background": 2, "obstacles": [{"key": 1, "origin": [79.0, 51.07], "isCircle": false, "colorKey": 3, "active": true, "data": [{"key": 0, "distance": 14.64, "angle": 2.88}, {"key": 1, "distance": 14.15, "angle": 63.36}, {"key": 2, "distance": 16.64, "angle": 115.59}, {"key": 3, "distance": 17.22, "angle": 179.6}, {"key": 4, "distance": 16.79, "angle": 239.1}, {"key": 5, "distance": 15.94, "angle": 302.66}]}, {"key": 2, "origin": [34.92, 42.24], "isCircle": false, "colorKey": 2, "active": true, "data": [{"key": 0, "distance": 15.23, "angle": 7.77}, {"key": 1, "distance": 16.92, "angle": 120.17}, {"key": 2, "distance": 14.28, "angle": 243.29}]}], "boundaries": [], "levelId": 0}, 
@@ -140,7 +140,7 @@
         "ownership": "Gemfields (75%), Mwiriti Ltd. (25%)",        
         "campaignPhotoUrl": "https://www.gemfieldsgroup.com/wp-content/uploads/2019/02/DSC_0690-WP-SH.jpg", 
         "difficulty": 2,
-        "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFb5d713","0xFF458def","0xFFbc6b79","0xFFa2a3b8","0xFFaf480b","0xFF33b6e0","0xFFba830a","0xFF562eeb","0xFF291bdf","0xFF4b5a9","0xFFb133e7","0xFFaa692","0xFF3de481","0xFF241ee6","0xFFb96c94","0xFF284471","0xFF43c022","0xFF7bd9c9","0xFF9bb69a","0xFF27f3d9","0xFF8f0980"], 
+        "colors": ["0xFFE7D197", "0xFFE0B4C8", "0xFFB3D0FA", "0xFFA1FAB5", "0xFFBBE1FB", "0xFFB2C89A", "0xFFB7BD9E", "0xFFCCA2D7", "0xFFF0ECAA", "0xFFA2C2E5", "0xFFAD9EDA", "0xFFA19C98", "0xFF97BAA2", "0xFFBFD5DC", "0xFFDBACC2", "0xFFA0A5EA", "0xFFD9D3D6", "0xFFFFFEB6", "0xFFBBA5C8", "0xFFB49C9F", "0xFFF4E6DB", "0xFFB8D099", "0xFFEAABE4", "0xFFB3AAF4", "0xFFA9F7DA", "0xFFD9E2E9", "0xFFD5B8E4", "0xFFE2DF9D", "0xFFFECBCB", "0xFFCCB5A2"], 
         "levels": [
             
             {"order": [2, 4], "background": 1, "obstacles": [{"key": 1, "origin": [31.36, 32.57], "isCircle": false, "colorKey": 2, "active": true, "data": [{"key": 0, "distance": 17.17, "angle": 1.68}, {"key": 1, "distance": 17.92, "angle": 55.1}, {"key": 2, "distance": 14.17, "angle": 118.97}, {"key": 3, "distance": 16.89, "angle": 180.74}, {"key": 4, "distance": 16.6, "angle": 235.65}, {"key": 5, "distance": 17.77, "angle": 298.44}]}, {"key": 2, "origin": [65.97, 22.23], "isCircle": true, "colorKey": 4, "active": true, "data": [{"key": 0, "distance": 17.83, "angle": 0.0}]}], "boundaries": [], "levelId": 0}, 
@@ -183,7 +183,7 @@
         "ownership": "Gemfields (75%), Industrial Development Corporation of Zambia (25%)",        
         "campaignPhotoUrl": "https://www.geologyforinvestors.com/wp-content/uploads/Kagem-mine-scaled.jpg", 
         "difficulty": 2,
-        "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFb5d713","0xFF458def","0xFFbc6b79","0xFFa2a3b8","0xFFaf480b","0xFF33b6e0","0xFFba830a","0xFF562eeb","0xFF291bdf","0xFF4b5a9","0xFFb133e7","0xFFaa692","0xFF3de481","0xFF241ee6","0xFFb96c94","0xFF284471","0xFF43c022","0xFF7bd9c9","0xFF9bb69a","0xFF27f3d9","0xFF8f0980"], 
+        "colors": ["0xFFA6CEF7", "0xFFEFAE9A", "0xFFEABFD2", "0xFFD6C3BC", "0xFFDBEF9C", "0xFFC3D7AB", "0xFFA2C8EA", "0xFFF4F7B3", "0xFFE0B3AF", "0xFFEDCEE0", "0xFFAEB4F3", "0xFFC1C2FE", "0xFFFCB8DB", "0xFFDCDEE9", "0xFFD8CBBF", "0xFF99B5E5", "0xFFA1A597", "0xFFDE96D6", "0xFF99FBAE", "0xFFC6D7D2", "0xFFE4AE97", "0xFFBCC4C6", "0xFF99FDD4", "0xFF96BD96", "0xFFF1BEE3", "0xFFC0E5C8", "0xFFD0C1C4", "0xFFB3FBD5", "0xFFD4E4D0", "0xFFAEC8A5"], 
         "levels": [
             
             {"order": [3, 6], "background": 4, "obstacles": [{"key": 1, "origin": [38.5, 79.49], "isCircle": false, "colorKey": 3, "active": true, "data": [{"key": 0, "distance": 16.88, "angle": 0.22}, {"key": 1, "distance": 14.89, "angle": 123.05}, {"key": 2, "distance": 15.15, "angle": 237.18}]}, {"key": 2, "origin": [63.44, 67.22], "isCircle": false, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 14.51, "angle": 9.93}, {"key": 1, "distance": 17.22, "angle": 75.66}, {"key": 2, "distance": 14.09, "angle": 144.04}, {"key": 3, "distance": 16.74, "angle": 212.46}, {"key": 4, "distance": 15.93, "angle": 286.27}]}], "boundaries": [], "levelId": 0}, 
@@ -226,7 +226,7 @@
         "ownership": "Various private entities",        
         "campaignPhotoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-qd0kJ_Vdj8YXOfOaBQDa8m7TUeqjBLsp4g&s", 
         "difficulty": 2,
-        "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFb5d713","0xFF458def","0xFFbc6b79","0xFFa2a3b8","0xFFaf480b","0xFF33b6e0","0xFFba830a","0xFF562eeb","0xFF291bdf","0xFF4b5a9","0xFFb133e7","0xFFaa692","0xFF3de481","0xFF241ee6","0xFFb96c94","0xFF284471","0xFF43c022","0xFF7bd9c9","0xFF9bb69a","0xFF27f3d9","0xFF8f0980"], 
+        "colors": ["0xFFB7B5D4", "0xFFCEED9F", "0xFFF79BBA", "0xFFDFE0B0", "0xFFFEA2D1", "0xFFBDF2C1", "0xFFACD1F0", "0xFF96E0CB", "0xFF9CD5A1", "0xFFD5E0DF", "0xFFC4BFAE", "0xFF97C2DF", "0xFFE1CCD9", "0xFFCCB6BB", "0xFF9BB9E5", "0xFFCFA3F4", "0xFFCCA4C3", "0xFFBEDF9D", "0xFFDCCBAF", "0xFF999FDC", "0xFFD5DBF8", "0xFFC99DE2", "0xFFA9AFE4", "0xFFB1A5C6", "0xFFD6F7FE", "0xFFCDE5CB", "0xFFBDE2A5", "0xFFAF98D0", "0xFFF1C1C0", "0xFFFEBBA6"], 
         "levels": [
             
             {"order": [6, 2], "background": 8, "obstacles": [{"key": 1, "origin": [65.07, 42.33], "isCircle": false, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 16.13, "angle": 3.11}, {"key": 1, "distance": 17.97, "angle": 85.4}, {"key": 2, "distance": 16.9, "angle": 176.86}, {"key": 3, "distance": 16.43, "angle": 272.26}]}, {"key": 2, "origin": [45.77, 61.31], "isCircle": false, "colorKey": 2, "active": true, "data": [{"key": 0, "distance": 14.25, "angle": 7.41}, {"key": 1, "distance": 14.83, "angle": 86.75}, {"key": 2, "distance": 14.45, "angle": 184.9}, {"key": 3, "distance": 15.02, "angle": 269.95}]}], "boundaries": [], "levelId": 0}, 
@@ -269,7 +269,7 @@
         "ownership": "State of Arkansas",        
         "campaignPhotoUrl": "https://www.arkansasstateparks.com/sites/default/files/styles/panorama_large/public/hero/articles/2022-03/Crater%20of%20Diamonds%20SP%20201908KSJ_0764ps.jpg?itok=0YnUrUar", 
         "difficulty": 2,
-        "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFb5d713","0xFF458def","0xFFbc6b79","0xFFa2a3b8","0xFFaf480b","0xFF33b6e0","0xFFba830a","0xFF562eeb","0xFF291bdf","0xFF4b5a9","0xFFb133e7","0xFFaa692","0xFF3de481","0xFF241ee6","0xFFb96c94","0xFF284471","0xFF43c022","0xFF7bd9c9","0xFF9bb69a","0xFF27f3d9","0xFF8f0980"], 
+        "colors": ["0xFFAD98A5", "0xFFDAAAA2", "0xFFE5A2C7", "0xFFA8E2F4", "0xFFDCDEEF", "0xFFD89DC5", "0xFFDCBEF7", "0xFFBD9FD3", "0xFFB0EDF9", "0xFFF7F9B4", "0xFFD9F7E7", "0xFFF8A3DC", "0xFFA6E9AB", "0xFFFDAEBF", "0xFFF0F7AB", "0xFFBCD7F0", "0xFFD3A6F0", "0xFFFBBFD6", "0xFFD2ACE9", "0xFFF9D8AA", "0xFFD0C8AC", "0xFFC4B1C7", "0xFFA7D8C8", "0xFFC7E6D7", "0xFFE8A9FE", "0xFFA1F5C3", "0xFFE3C8AB", "0xFFA9FCF4", "0xFFB4CCE6", "0xFF9BA3B0"], 
         "levels": [
             
             {"order": [6, 2], "background": 3, "obstacles": [{"key": 1, "origin": [43.94, 57.55], "isCircle": false, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 16.86, "angle": 9.07}, {"key": 1, "distance": 16.04, "angle": 49.42}, {"key": 2, "distance": 17.23, "angle": 101.37}, {"key": 3, "distance": 15.84, "angle": 151.38}, {"key": 4, "distance": 16.11, "angle": 204.63}, {"key": 5, "distance": 15.05, "angle": 253.94}, {"key": 6, "distance": 17.66, "angle": 308.37}]}, {"key": 2, "origin": [29.23, 23.35], "isCircle": false, "colorKey": 2, "active": true, "data": [{"key": 0, "distance": 15.18, "angle": 3.41}, {"key": 1, "distance": 17.72, "angle": 122.57}, {"key": 2, "distance": 17.84, "angle": 243.73}]}], "boundaries": [], "levelId": 0}, 
@@ -312,7 +312,7 @@
         "ownership": "Kuvimba Mining House",        
         "campaignPhotoUrl": "https://www.chronicle.co.zw/wp-content/uploads/sites/3/2020/07/emerald-680x380.jpg", 
         "difficulty": 2,
-        "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFb5d713","0xFF458def","0xFFbc6b79","0xFFa2a3b8","0xFFaf480b","0xFF33b6e0","0xFFba830a","0xFF562eeb","0xFF291bdf","0xFF4b5a9","0xFFb133e7","0xFFaa692","0xFF3de481","0xFF241ee6","0xFFb96c94","0xFF284471","0xFF43c022","0xFF7bd9c9","0xFF9bb69a","0xFF27f3d9","0xFF8f0980"], 
+        "colors": ["0xFFB0DEAA", "0xFF9DAAB7", "0xFFC9BDE5", "0xFFB4EDC6", "0xFFA4CDDF", "0xFF9ACF9E", "0xFF99E09C", "0xFFC4A7F0", "0xFFC5C0C8", "0xFFE8BB9E", "0xFFE2B8BD", "0xFFC9B3E0", "0xFFE2DAF3", "0xFF97D8B1", "0xFFDCB0A8", "0xFFFBD1BE", "0xFFF2A8AF", "0xFFD6D7C9", "0xFFB5E0C8", "0xFFD99EB6", "0xFF9DAEF0", "0xFFF6FCFD", "0xFFD6A0B5", "0xFFF1A5AE", "0xFFF2A3F4", "0xFFB3BFE7", "0xFFDEDFFC", "0xFFE7F8EB", "0xFFD598A7", "0xFFFACBCF"], 
         "levels": [
             
             {"order": [6, 1], "background": 0, "obstacles": [{"key": 1, "origin": [55.44, 25.03], "isCircle": false, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 17.4, "angle": 3.88}, {"key": 1, "distance": 17.16, "angle": 89.42}, {"key": 2, "distance": 17.43, "angle": 175.69}, {"key": 3, "distance": 17.9, "angle": 273.05}]}, {"key": 2, "origin": [49.46, 75.92], "isCircle": false, "colorKey": 1, "active": true, "data": [{"key": 0, "distance": 17.31, "angle": 4.25}, {"key": 1, "distance": 15.92, "angle": 61.45}, {"key": 2, "distance": 16.59, "angle": 120.92}, {"key": 3, "distance": 14.12, "angle": 181.89}, {"key": 4, "distance": 15.95, "angle": 243.28}, {"key": 5, "distance": 14.5, "angle": 296.02}]}], "boundaries": [], "levelId": 0}, 
@@ -355,7 +355,7 @@
         "ownership": "Various private entities",        
         "campaignPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Hiddenitecreek.jpg/250px-Hiddenitecreek.jpg", 
         "difficulty": 2,
-        "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFb5d713","0xFF458def","0xFFbc6b79","0xFFa2a3b8","0xFFaf480b","0xFF33b6e0","0xFFba830a","0xFF562eeb","0xFF291bdf","0xFF4b5a9","0xFFb133e7","0xFFaa692","0xFF3de481","0xFF241ee6","0xFFb96c94","0xFF284471","0xFF43c022","0xFF7bd9c9","0xFF9bb69a","0xFF27f3d9","0xFF8f0980"], 
+        "colors": ["0xFFE0BEBC", "0xFFF6AFE7", "0xFFEBBDF6", "0xFFA7D9CF", "0xFFBAC4BD", "0xFFE4C0F9", "0xFFBEB2A3", "0xFFE5D4BA", "0xFFBFF7F3", "0xFFA5DEAF", "0xFFEFE3AD", "0xFFE0B7F9", "0xFF98D8A4", "0xFF9DCEF6", "0xFFCBCFF5", "0xFF97DFB7", "0xFF97D89D", "0xFF9FC1EB", "0xFFF9DDB2", "0xFFBBC9D8", "0xFFB2A0F2", "0xFFA5F0A4", "0xFF96DECC", "0xFFD9E4C3", "0xFFB5F1A3", "0xFFDED9E6", "0xFF9EEDD2", "0xFF96F5E6", "0xFFA6F5C0", "0xFFD6BFD4"], 
         "levels": [
             
             {"order": [5, 6], "background": 5, "obstacles": [{"key": 1, "origin": [43.27, 74.58], "isCircle": false, "colorKey": 5, "active": true, "data": [{"key": 0, "distance": 15.53, "angle": 5.99}, {"key": 1, "distance": 14.28, "angle": 121.6}, {"key": 2, "distance": 15.39, "angle": 238.12}]}, {"key": 2, "origin": [44.63, 25.7], "isCircle": false, "colorKey": 6, "active": true, "data": [{"key": 0, "distance": 15.15, "angle": 7.47}, {"key": 1, "distance": 15.44, "angle": 48.7}, {"key": 2, "distance": 17.53, "angle": 85.03}, {"key": 3, "distance": 15.51, "angle": 139.58}, {"key": 4, "distance": 17.63, "angle": 179.46}, {"key": 5, "distance": 15.27, "angle": 224.23}, {"key": 6, "distance": 16.45, "angle": 269.72}, {"key": 7, "distance": 17.48, "angle": 317.62}]}], "boundaries": [], "levelId": 0}, 
@@ -399,7 +399,7 @@
                 "ownership": "Various private entities",        
                 "campaignPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Hiddenitecreek.jpg/250px-Hiddenitecreek.jpg", 
                 "difficulty": 2,
-                "colors": ["0xFF35eddd","0xFFf813fb","0xFFf1e44e","0xFFf1e44e"],
+                "colors": ["0xFFD9CECA", "0xFFF9B4D8", "0xFFF0AFCA", "0xFFB7BB9B"],
                 "levels": [
                     
                     {

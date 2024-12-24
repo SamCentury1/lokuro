@@ -808,5 +808,25 @@ class Helpers {
     return counts;
   }
 
+  List<int> getCollectedGems(GamePlayState gamePlayState, int gem,) {
+    int level = gamePlayState.levelKey!;
+    int previousLevel = level == 0 ? 0 : level - 1;
+    int countPrev = 0;
+    int count = 0;
+    for (int i=0; i<level; i++) {
+      var order = gamePlayState.currentCampaignState.levels[i]["order"];
+
+      for (int number in order) {
+        if (number == gem) {
+          if (i<previousLevel) {
+            countPrev++;
+          }          
+          count++;
+        }
+      } 
+    }
+    return [countPrev,count];
+  }
+
 
 }

@@ -67,7 +67,11 @@ class _CampaignButtonState extends State<CampaignButton> {
                       width: settingsState.playAreaSize.width * 0.9,
                       height: 100, // Maintain fixed height here
                       loadingBuilder: (context, child, progress) {
+                        
                         if (progress == null) {
+                          // WidgetsBinding.instance.addPostFrameCallback((_) {
+                          //   settingsState.addLoadedImageUrl(campaign["campaignPhotoUrl"]);
+                          // });                          
                           return child;
                         }
                         return Center(child: CircularProgressIndicator());

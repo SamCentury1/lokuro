@@ -44,6 +44,15 @@ final List<Color>  _backgroundColors = const  [
     notifyListeners();
   }
 
+
+  List<String> _loadedImageUrls = [];
+  List<String> get loadedImageUrls => _loadedImageUrls;
+  void addLoadedImageUrl(String url) {
+    if (!_loadedImageUrls.contains(url)) {
+      _loadedImageUrls.add(url);
+      notifyListeners(); // Notify listeners to rebuild UI
+    }
+  }
 // late Campaign initialCampaignState;
 // Future<void> loadInitialStateForCampaign(SettingsController settings, int campaignIndex) async {
 //   final Map<String,dynamic> jsonData = await fetchCampaignData(settings, campaignIndex);

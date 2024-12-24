@@ -298,12 +298,15 @@ class GameLogic {
     
 
             
-            if (gamePlayState.collisionPointData["object"]["type"]=="boundary") {
+            if (gamePlayState.collisionPointData["object"]["type"]=="boundary" && !gamePlayState.isGameOver) {
               executeBoundaryCollision(gamePlayState);
 
               // updateBoundaryData(gamePlayState, settingsState.playAreaSize);
 
               final int hitKey = gamePlayState.collisionPointData["object"]["key"];
+
+              print("hit boundary animation on => is game active though? ${gamePlayState.isGameOver}");
+
 
               Map<String,dynamic> boundaryHitData = {
                 "key": hitKey,

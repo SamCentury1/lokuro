@@ -62,14 +62,13 @@ class _HomeScreenState extends State<HomeScreen> {
       future: getCampaignData(_settings),
       builder: (context, AsyncSnapshot<void> futureSnapshot) {
         if (futureSnapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return const Scaffold(body: Center(child: CircularProgressIndicator()));
         } else if (futureSnapshot.hasError) {
-          return const SizedBox(
-            child: Text("error"),
-          );
+          return const Scaffold(body: Center(child: Text("Error")));
         } else {
           return Consumer<SettingsController>(
             builder: (context,settings,child) {
+
               return SafeArea(
                 child: Scaffold(
                   backgroundColor: const Color.fromARGB(255, 65, 65, 65),
@@ -98,157 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                           Column(
                             children: displayCampaigns(settings, settingsState),
-                          )
-
-
-                          // Text("campaigns: ${settings.campaignData.value.length}")
-
-
-              
-                          // const Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Align(
-                          //     alignment:Alignment.centerLeft,
-                          //     child: Text(
-                          //       "Novice",
-                          //       style: TextStyle(
-                          //         fontSize: 28,
-                          //         color: Color.fromARGB(255, 230, 228, 228)
-                          //       ),
-                          //     )
-                          //   ),
-                          // ),
-                          // Wrap(
-                          //   children: displayLevels(settings.levelData.value)
-                          //   // children: displayLevels(_settings),
-                          // ),
-                       
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Align(
-                          //     alignment:Alignment.centerLeft,
-                          //     child: Text(
-                          //       "Novice",
-                          //       style: TextStyle(
-                          //         fontSize: 28,
-                          //         color: const Color.fromARGB(255, 230, 228, 228)
-                          //       ),
-                          //     )
-                          //   ),
-                          // ),
-                          // Wrap(
-                          //   children: getLevelButtons(settingsState,"novice")
-                          //   // children: displayLevels(_settings),
-                          // ),
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Divider(thickness:2.0, color: Colors.grey,),
-                          // ),
-              
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Align(
-                          //     alignment:Alignment.centerLeft,
-                          //     child: Text(
-                          //       "Easy",
-                          //       style: TextStyle(
-                          //         fontSize: 28,
-                          //         color: const Color.fromARGB(255, 230, 228, 228)
-                          //       ),
-                          //     )
-                          //   ),
-                          // ),
-                          // Wrap(
-                          //   children: getLevelButtons(settingsState,"easy")
-                          // ),
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Divider(thickness:2.0, color: Colors.grey,),
-                          // ),
-              
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Align(
-                          //     alignment:Alignment.centerLeft,
-                          //     child: Text(
-                          //       "Intermediate",
-                          //       style: TextStyle(
-                          //         fontSize: 28,
-                          //         color: const Color.fromARGB(255, 230, 228, 228)
-                          //       ),
-                          //     )
-                          //   ),
-                          // ),
-                          // Wrap(
-                          //   children: getLevelButtons(settingsState,"intermediate")
-                          // ),
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Divider(thickness:2.0, color: Colors.grey,),
-                          // ),
-              
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Align(
-                          //     alignment:Alignment.centerLeft,
-                          //     child: Text(
-                          //       "Advanced",
-                          //       style: TextStyle(
-                          //         fontSize: 28,
-                          //         color: const Color.fromARGB(255, 230, 228, 228)
-                          //       ),
-                          //     )
-                          //   ),
-                          // ),
-                          // Wrap(
-                          //   children: getLevelButtons(settingsState,"advanced")
-                          // ),
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Divider(thickness:2.0, color: Colors.grey,),
-                          // ),
-              
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Align(
-                          //     alignment:Alignment.centerLeft,
-                          //     child: Text(
-                          //       "Hard",
-                          //       style: TextStyle(
-                          //         fontSize: 28,
-                          //         color: const Color.fromARGB(255, 230, 228, 228)
-                          //       ),
-                          //     )
-                          //   ),
-                          // ),
-                          // Wrap(
-                          //   children: getLevelButtons(settingsState,"hard")
-                          // ),
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Divider(thickness:2.0, color: Colors.grey,),
-                          // ), 
-              
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Align(
-                          //     alignment:Alignment.centerLeft,
-                          //     child: Text(
-                          //       "Diabolical",
-                          //       style: TextStyle(
-                          //         fontSize: 28,
-                          //         color: const Color.fromARGB(255, 230, 228, 228)
-                          //       ),
-                          //     )
-                          //   ),
-                          // ),
-                          // Wrap(
-                          //   children: getLevelButtons(settingsState,"diabolical")
-                          // ),
-                          // Padding(
-                          //   padding: const EdgeInsets.all(12.0),
-                          //   child: Divider(thickness:2.0, color: Colors.grey,),
-                          // ),                                                                                
+                          )                                                                           
                         ],
                       ),
                     )
@@ -263,36 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// List<Widget> getLevelButtons(SettingsState settingsState, String difficulty) {
 
-//   List<Widget> levelButtons = [];
-  
-//   for (int i = 1; i< settingsState.levelData.length; i++) {
-//     if (settingsState.levelData[i]["difficulty"]==difficulty) {
-//       Widget levelButton = LevelButton(index: i);
-//       levelButtons.add(levelButton);
-//     }
-//   }
-//   return levelButtons;
-// }
-
-// List<Widget> displayLevels(List<dynamic> levelData,) {
-
-//   List<Widget> levelButtons = [];
-  
-//   for (int i = 0; i< levelData.length; i++) {
-//     // if (levelData[i]["difficulty"]==difficulty) {
-//       Widget levelButton = LevelButton(index: i,);
-//       levelButtons.add(levelButton);
-//     // }
-//   }
-//   return levelButtons;
-// }
 
 
 Future<void> getCampaignData(SettingsController settings) async {
-  // List<dynamic> levelData = settings.levelData.value;
-
   // if local storage is empty - get the level data as json payload and set it
   if (settings.levelData.value.isEmpty) {
     print("data is empty - load it");
@@ -316,35 +139,7 @@ Future<List<dynamic>> getLevelDataFromLocalStorage(SettingsController settings) 
 List<Widget> displayCampaigns(SettingsController settings, SettingsState settingsState) {
   List<Widget> res = [];
   for (int i=0; i<settings.campaignData.value.length; i++) {
-    // Map<String,dynamic> campaign = settings.campaignData.value[i];
     Widget widget = CampaignButton(index: i);
-    // Widget widget = GestureDetector(
-    //   onTap:() => General().navigateToLevel(context,index,settingsState,gamePlayState,animationState,settings),
-    //   child: Padding(
-    //     padding: EdgeInsets.all(8.0),
-    //     child: Container(
-    //       decoration: BoxDecoration(
-    //         color: const Color.fromARGB(255, 220, 141, 236),
-    //         borderRadius: BorderRadius.all(Radius.circular(8.0)),
-    //         boxShadow: [
-    //           BoxShadow(color: const Color.fromARGB(134, 58, 57, 57), offset: Offset.zero, blurRadius: 20.0, spreadRadius: 5.0),
-    //           BoxShadow(color: const Color.fromARGB(62, 223, 221, 221), offset: Offset.zero, blurRadius: 10.0, spreadRadius: 3.0),
-    //         ]
-    //       ),
-    //       width: settingsState.playAreaSize.width*0.6,
-    //       child: Padding(
-    //         padding: EdgeInsets.all(5.0),
-    //         child: Text(
-    //           campaign["campaignName"],
-    //           style: TextStyle(
-    //             color: Colors.black,
-    //             fontSize: 22
-    //           ),
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
     res.add(widget);
   }
   return res;
