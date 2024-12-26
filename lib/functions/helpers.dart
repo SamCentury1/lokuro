@@ -779,6 +779,19 @@ class Helpers {
     return complete;
   }
 
+  List<int> getUniqueGems(GamePlayState gamePlayState) {
+    List<int> res = [];
+    for (int i=0; i<gamePlayState.currentCampaignState.levels.length;i++) {
+      List<dynamic> order = gamePlayState.currentCampaignState.levels[i]["order"];
+      for (var number in order) {
+        if (!res.contains(number)) {
+          res.add(number as int);
+        }
+      }
+    }
+    return res;
+  }
+
   Map<int,int> getMapOfCollectedGems(GamePlayState gamePlayState) {
     List<int> allGems = [];
     List<int> uniqueGems = [];

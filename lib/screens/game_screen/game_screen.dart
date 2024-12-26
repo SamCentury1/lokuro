@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -696,11 +697,18 @@ double getBottomBarContentHeight(bool isBottomBarSuperActive) {
 }
 
 List<Widget> getCollectedGems(GamePlayState gamePlayState, AnimationController gameStartedController) {
-  Map<int,int> mapCollectedGems = Helpers().getMapOfCollectedGems(gamePlayState);
+  // Map<int,int> mapCollectedGems = Helpers().getMapOfCollectedGems(gamePlayState);
+  List<int> uniqueGems = Helpers().getUniqueGems(gamePlayState);
+  
   List<Widget> widgets = [];
-  for (var entry in mapCollectedGems.entries) {
-    Color color = gamePlayState.colors[entry.key];
-    Widget item = getCollectedGem(gamePlayState,entry.key);
+  for (int gemId in uniqueGems) {
+    Widget item = getCollectedGem(gamePlayState,gemId,gameStartedController);
+    widgets.add(item);
+  }
+  
+  // for (var entry in mapCollectedGems.entries) {
+  //   Color color = gamePlayState.colors[entry.key];
+  //   Widget item = getCollectedGem(gamePlayState,entry.key);
     // Widget item = Row(
     //   children: [
     //     Container(
@@ -721,14 +729,44 @@ List<Widget> getCollectedGems(GamePlayState gamePlayState, AnimationController g
     //     SizedBox(width: 10,)
     //   ],
     // );
-    widgets.add(item);
-  }
+    // widgets.add(item);
+  // }
   return widgets;
 } 
 
-Widget getCollectedGem(GamePlayState gamePlayState, int gem) {
-  List<int> scores = Helpers().getCollectedGems(gamePlayState, gem);
-  print(scores);
+Widget getCollectedGem(GamePlayState gamePlayState, int gem, AnimationController animationController) {
+  // List<int> scores = Helpers().getCollectedGems(gamePlayState, gem);
+  // int displayScore = scores[0];
+  // if (animationController.value < 0.5) {
+  //   displayScore = scores[0];
+  // } else {
+  //   displayScore = scores[1];
+  // }
+  List<int> displayScore = getDisplayedGemScore(gamePlayState,gem,animationController);
+  // List<int> scores = Helpers().getCollectedGems(gamePlayState, gem);
+  
+
+
+  // int currentScore = scores[0];
+  // int difference = (scores[1]-scores[0]+1);
+
+  // if (difference > 0) {
+  //   currentScore == scores[0]+1;
+  //   int duration = (1500/difference).floor();
+  //   Timer.periodic((Duration(milliseconds: duration)), (t) {
+  //     if (currentScore == scores[1]) {
+  //       t.cancel();
+  //     } else {
+  //       currentScore++;
+  //     }
+  //   });
+  // }
+
+
+
+
+  // print("displayScore => $displayScore");
+  int value = displayScore[(animationController.value*200).floor()];
   Color color = gamePlayState.colors[gem];
   Widget item = Row(
     children: [
@@ -741,7 +779,7 @@ Widget getCollectedGem(GamePlayState gamePlayState, int gem) {
       ),
       SizedBox(width: 3,),
       Text(
-        "0",
+        value.toString(),
         style: TextStyle(
           color: Colors.white,
           fontSize: 12
@@ -752,3 +790,41 @@ Widget getCollectedGem(GamePlayState gamePlayState, int gem) {
   );
   return item;
 }
+
+List<int> getDisplayedGemScore(GamePlayState gamePlayState, int gemId, AnimationController gameStartedController) {
+  List<int> scores = Helpers().getCollectedGems(gamePlayState, gemId);
+  // print("scores => $scores");
+  int difference = scores[1]-scores[0];
+  List<int> res = [];
+  // Random random = Random();
+
+  // int randomDelay = random.nextInt(30);
+  int delay = gemId*5;
+  if (difference==0) {
+    res = List.generate(201, (v) => scores[1]);
+  } else {
+    res = List.generate(delay, (v) => scores[0]);
+    int framesLeft = 101-delay;
+    int framesPerNumber = (framesLeft/(difference+1)).floor();
+    for (int i=scores[0]; i<scores[1]; i++) {
+      for (int j=0; j<framesPerNumber;j++) {
+        res.add(i);
+      }
+    }
+    int countOfLastFrames = 101 - res.length;
+    for (int i=0;i<countOfLastFrames;i++) {
+      res.add(scores[1]);
+    }
+
+    for (int i=0;i<100;i++) {
+      res.add(scores[1]);
+    }
+    // res = List.generate(101, (v) => scores[1]);
+  }
+  
+
+  return res;
+}
+
+
+
