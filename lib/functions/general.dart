@@ -59,6 +59,8 @@ class General {
       MaterialPageRoute(builder: (context) => const GameScreen())
     );
 
+
+
     gamePlayState.setLevelTransition([null, levelId]);
     initializeGame(context,campaignId,levelId,settingsState,gamePlayState,settings);
     animationState.setShouldRunGameStartedAnimation(true);
@@ -77,6 +79,11 @@ void navigateToNextLevel(
   AnimationState animationState,
   SettingsController settings,
 ) {
+  Random rand = Random();
+  final int newCoins = rand.nextInt(40)+80;
+  final int currentCoinsSum = gamePlayState.coinsCollected.last;
+  final int totalCoins = currentCoinsSum+newCoins;
+  gamePlayState.setCoinsCollected([...gamePlayState.coinsCollected,totalCoins]);  
   initializeGame(context,campaignId,levelId,settingsState,gamePlayState,settings);
   animationState.setShouldRunGameStartedAnimation(true);
 }
@@ -92,7 +99,7 @@ void initializeCampaign(
 
   gamePlayState.setCampaignKey(campaignId);
   gamePlayState.setCurrentCampaignState(settings, campaignId);
-
+  gamePlayState.setCoinsCollected([0]);
   List<Map<String, dynamic>> rawBoundaryData = Helpers().generateBoundaryData(settingsState.playAreaSize);
   gamePlayState.setBoundaryData(rawBoundaryData); 
 
@@ -145,6 +152,7 @@ void initializeGame(
   gamePlayState.setLevelKey(levelId);
 
   // Level levelData = settings.campaignData.value.firstWhere(test)
+  
   
   List<int> order = List<int>.from(levelData.order);
   gamePlayState.setTargetObstacleHitOrder(order);

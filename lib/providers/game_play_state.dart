@@ -192,6 +192,13 @@ class GamePlayState extends ChangeNotifier {
   // }
 
 
+  late List<int> _coinsCollected = [0];
+  List<int> get coinsCollected => _coinsCollected;
+  void setCoinsCollected(List<int> value) {
+    _coinsCollected = value;
+    notifyListeners();
+  }
+
 
 
   late List<Offset?> _lineData = [];
