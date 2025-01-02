@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lokuro/components/shimmer_loading.dart';
 import 'package:lokuro/functions/general.dart';
 import 'package:lokuro/functions/helpers.dart';
 import 'package:lokuro/providers/animation_state.dart';
@@ -30,6 +31,8 @@ class _CampaignButtonState extends State<CampaignButton> {
   }
 
 
+  late bool isLoading = true;
+
   @override
   Widget build(BuildContext context) {
 
@@ -41,109 +44,131 @@ class _CampaignButtonState extends State<CampaignButton> {
     
     Map<String,dynamic> campaign = settings.campaignData.value[widget.index];
 
-    return SizedBox(
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: ClipRRect(
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          borderRadius: BorderRadius.circular(8.0),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 20, 20, 20),
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              boxShadow: [
-                BoxShadow(color: Color.fromARGB(134, 58, 57, 57), offset: Offset.zero, blurRadius: 20.0, spreadRadius: 5.0),
-                BoxShadow(color: Color.fromARGB(62, 223, 221, 221), offset: Offset.zero, blurRadius: 10.0, spreadRadius: 3.0),
-              ],
-            ),
-            width: settingsState.playAreaSize.width * 0.9,
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    Image.network(
-                      campaign["campaignPhotoUrl"],
-                      fit: BoxFit.cover,
-                      width: settingsState.playAreaSize.width * 0.9,
-                      height: 100, // Maintain fixed height here
-                      loadingBuilder: (context, child, progress) {
-                        
-                        if (progress == null) {
-                          // WidgetsBinding.instance.addPostFrameCallback((_) {
-                          //   settingsState.addLoadedImageUrl(campaign["campaignPhotoUrl"]);
-                          // });                          
-                          return child;
-                        }
-                        return Center(child: CircularProgressIndicator());
-                      },
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Center(
-                          child: Icon(
-                            Icons.error,
-                            color: Colors.red,
-                            size: 50,
-                          ),
-                        );
-                      },
-                    ),
-                    campaignCardCampaignName(context, campaign["campaignName"],campaign["location"]),
-                  ],
-                ),
-                
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-              
-                      Flexible(
-                        child: Table(
-                          columnWidths: const <int, TableColumnWidth>{
-                            0: FlexColumnWidth(1),
-                            1: FlexColumnWidth(2),
-                          },
-                          children: <TableRow>[
-                            campaignTableRow("Difficulty: ",convertDifficultyCodeToString(campaign["difficulty"])),
-                            campaignTableRow("Levels: ",campaign["levels"].length.toString(),),
-                          ],
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-
-                          showDialog(
-                            context: context, 
-                            builder: (context) {
-                              return CampaignDialog(index: widget.index);
+    return ShimmerLoading(
+      isLoading: isLoading,
+      child: SizedBox(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: ClipRRect(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            borderRadius: BorderRadius.circular(8.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 20, 20, 20),
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                boxShadow: [
+                  BoxShadow(color: Color.fromARGB(134, 58, 57, 57), offset: Offset.zero, blurRadius: 20.0, spreadRadius: 5.0),
+                  BoxShadow(color: Color.fromARGB(62, 223, 221, 221), offset: Offset.zero, blurRadius: 10.0, spreadRadius: 3.0),
+                ],
+              ),
+              width: settingsState.playAreaSize.width * 0.9,
+              height: 160,
+              child: Column(
+                children: [
+                  SizedBox(
+                    child: Stack(
+                      children: [
+                        Image.network(
+                          campaign["campaignPhotoUrl"],
+                          fit: BoxFit.cover,
+                          width: settingsState.playAreaSize.width * 0.9,
+                          height: 100, // Maintain fixed height here
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) {
+                              // Image has finished loading
+                              if (isLoading) {
+                                WidgetsBinding.instance.addPostFrameCallback((_) {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                });
+                              }
+                              return child;
+                            } else {
+                              // Show ShimmerLoading while the image is loading
+                              return ShimmerLoading(
+                                isLoading: true,
+                                child: Container(
+                                  width: settingsState.playAreaSize.width * 0.9,
+                                  height: 100,
+                                  color: Colors.grey[300], // Placeholder color
+                                ),
+                              );
                             }
-                          );
-                          // setState(() {
-                          //   isCardOpen = !isCardOpen;
-                          // });
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 49, 48, 48),
-                            borderRadius: BorderRadius.all(Radius.circular(6.0))
+                          },
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Center(
+                              child: Icon(
+                                Icons.error,
+                                color: Colors.red,
+                                size: 50,
+                              ),
+                            );
+                          },
+                        ),
+                        campaignCardCampaignName(context, campaign["campaignName"],campaign["location"]),
+                              
+                                
+                                                      
+                      ],
+                    ),
+                  ),
+                  
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                
+                        Flexible(
+                          child: Table(
+                            columnWidths: const <int, TableColumnWidth>{
+                              0: FlexColumnWidth(1),
+                              1: FlexColumnWidth(2),
+                            },
+                            children: <TableRow>[
+                              campaignTableRow("Difficulty: ",convertDifficultyCodeToString(campaign["difficulty"])),
+                              campaignTableRow("Levels: ",campaign["levels"].length.toString(),),
+                            ],
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(18.0, 4.0, 18.0, 4.0,),
-                            child: Text(
-                              "Launch",
-                              style: TextStyle(
-                                color: Colors.white
+                        ),
+                        GestureDetector(
+                          onTap: () {
+      
+                            showDialog(
+                              context: context, 
+                              builder: (context) {
+                                return CampaignDialog(index: widget.index);
+                              }
+                            );
+                            // setState(() {
+                            //   isCardOpen = !isCardOpen;
+                            // });
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 49, 48, 48),
+                              borderRadius: BorderRadius.all(Radius.circular(6.0))
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(18.0, 4.0, 18.0, 4.0,),
+                              child: Text(
+                                "Launch",
+                                style: TextStyle(
+                                  color: Colors.white
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              
-              
-              
-              ],
+                        )
+                      ],
+                    ),
+                  )
+                
+                
+                
+                ],
+              ),
             ),
           ),
         ),

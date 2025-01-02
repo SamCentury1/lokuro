@@ -30,7 +30,7 @@ class _GemScoreboardItemAnimationState extends State<GemScoreboardItemAnimation>
   late int val = 0;
   final int durationMs = 500;
   late int target = durationMs;
-  late double progress = 0.0;
+  // late double progress = 0.0;
   late GamePlayState _gamePlayState;
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _GemScoreboardItemAnimationState extends State<GemScoreboardItemAnimation>
       if (widget.order >= 0) {
 
         Future.delayed(Duration(milliseconds: 300 * widget.order), () {
-          print("you are in gem id ${widget.index} and the order of ${widget.order}");
+          // print("you are in gem id ${widget.index} and the order of ${widget.order}");
           startAnimation();
         });
       }
@@ -64,7 +64,7 @@ class _GemScoreboardItemAnimationState extends State<GemScoreboardItemAnimation>
     int diff = (scoreData[1]-scoreData[0]);
 
     for (int i=0; i<diff; i++) {
-      print("starting progress anim");
+      // print("starting progress anim");
       startTimer();
     }
 
@@ -121,7 +121,7 @@ class _GemScoreboardItemAnimationState extends State<GemScoreboardItemAnimation>
                       "+1",
                       style: TextStyle(
                         color: Colors.black.withAlpha((255*progress).floor()),
-                        fontSize: 18,
+                        fontSize: 18 + (8 * progress),
                         shadows: <Shadow>[
                           Shadow(
                             color: Colors.white.withAlpha((255*progress).floor()),

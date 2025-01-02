@@ -11,6 +11,7 @@ import 'package:lokuro/functions/helpers.dart';
 import 'package:lokuro/providers/animation_state.dart';
 import 'package:lokuro/providers/game_play_state.dart';
 import 'package:lokuro/providers/settings_state.dart';
+import 'package:lokuro/screens/game_over_screen.dart/game_over_screen.dart';
 import 'package:lokuro/screens/game_screen/background_painter/background_painter.dart';
 import 'package:lokuro/screens/game_screen/components/coin_collector.dart';
 import 'package:lokuro/screens/game_screen/components/gem_scoreboard_item.dart';
@@ -33,7 +34,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
 
   late GamePlayState _gamePlayState;
   late AnimationState animationState;
-
+  late SettingsState _settingsState;
+  late SettingsController _settings;
   late AnimationController gameStartedController;
   late Animation<double> gameStartedAnimation;
 
@@ -57,8 +59,13 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
 
     _gamePlayState = Provider.of<GamePlayState>(context, listen: false);
     animationState = Provider.of<AnimationState>(context, listen: false);
+    _settingsState = Provider.of<SettingsState>(context, listen: false);
+    _settings = Provider.of<SettingsController>(context, listen: false);
     initializeAnimations();
+
     animationState.addListener(handleAnimationStateChange);
+    _gamePlayState.addListener(handleAnimationStateChange);
+
 
     _scrollController = ScrollController();
 
@@ -99,6 +106,53 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
       print("caca butt");
       executeGameStartedAnimation();
     }
+
+    // if (animationState.shouldRunCountGemsAnimation) {
+
+    //   var gems = _gamePlayState.currentCampaignState.levels[_gamePlayState.levelKey!]["order"];
+    //   int count = 0;
+    //   int target = (100 * gems.length).floor();
+
+      // List<Map<String,dynamic>> scoreWidgets = [];
+      // for (int i=0;i<gems.length;i++) {
+
+      // }
+
+      // for (int i=0;i<gems.length;i++) {
+
+      //   int durationCount = 0;
+      //   Future.delayed(Duration(seconds: i*1), () {
+      //     Timer.periodic(const Duration(milliseconds: 10), (Timer timer) {
+      //       if (durationCount == 100) {
+
+      //       }
+      //     });
+      //   });
+      // }
+      // Timer.periodic(const Duration(milliseconds: 10), (Timer timer) {
+      //   if (count == target) {
+      //     timer.cancel();
+      //     animationState.setShouldRunCountGemsAnimation(false);
+      //     int campaignId = _gamePlayState.campaignKey!;
+      //     int nextLevel = _gamePlayState.levelKey! + 1;          
+
+      //     if (nextLevel == _gamePlayState.currentCampaignState.levels.length) {
+      //       print("go to this new thing??");
+      //       Navigator.of(context).pushReplacement(
+      //         MaterialPageRoute(builder: (context) => const GameOverScreen())
+      //       );  
+      //     } else {
+      //       General().navigateToNextLevel(context, campaignId, nextLevel, _settingsState, _gamePlayState, animationState,_settings);
+      //       Navigator.of(context).pop();        
+      //     } 
+              
+      //   } else {
+      //     count++;
+      //   }
+      // });
+
+
+    // }
   }
 
   void executeGameStartedAnimation() {
@@ -313,28 +367,39 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                         ),
                       ),
 
-                      Positioned(
-                        top: 2,
-                        left: (settingsState.screenSize.width*0.05)/2,
-                        child: Container(
-                          // color: Colors.orange,
-                          width: settingsState.playAreaSize.width*0.95,
-                          height: 150,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                width: coinCollectorWidth,
-                                height: 25,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children : getCollectedGemsAnimation(gamePlayState,animationState),
-                              ),
-                            ],
-                          ),
-                        )
-                      ),
+                      // Positioned(
+                      //   top: 2,
+                      //   left: (settingsState.screenSize.width*0.05)/2,
+                      //   child: Container(
+                      //     // color: Colors.orange,
+                      //     width: settingsState.playAreaSize.width*0.95,
+                      //     height: 150,
+                      //     child: Row(
+                      //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //       children: [
+                      //         Container(
+                      //           width: coinCollectorWidth,
+                      //           height: 25,
+                      //         ),
+                      //         Row(
+                      //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //           children : getCollectedGemsAnimation(gamePlayState,animationState),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   )
+                      // ),
+
+                      // animationState.shouldRunCountGemsAnimation ?
+                      // Positioned(
+                      //   top: 100,
+                      //   left: 100,
+                      //   child: Container(
+                      //     width: 50,
+                      //     height: 50,
+                      //     color: Colors.red,
+                      //   )
+                      // ) : SizedBox(),
 
 
 
@@ -516,39 +581,39 @@ List<Widget> getCollectedGems(GamePlayState gamePlayState, AnimationState animat
     int gemId = uniqueGems[i];
     // Widget item = getCollectedGem(gamePlayState,gemId,animationState);
     int order = previousGems.indexOf(gemId);
-    List<int> scores = Helpers().getCollectedGems(gamePlayState, gemId);
-    Widget item = GemScoreboardItem(index:gemId, order: order, scoreData:scores,  animationState: animationState,);
+    // List<int> scores = Helpers().getCollectedGems(gamePlayState, gemId);
+    Widget item = GemScoreboardItem(index:gemId, order: order,  animationState: animationState,);
     widgets.add(item);
   }
   return widgets;
 } 
 
-List<Widget> getCollectedGemsAnimation(GamePlayState gamePlayState, AnimationState animationState) {
-  // Map<int,int> mapCollectedGems = Helpers().getMapOfCollectedGems(gamePlayState);
-  List<int> uniqueGems = Helpers().getUniqueGems(gamePlayState);
+// List<Widget> getCollectedGemsAnimation(GamePlayState gamePlayState, AnimationState animationState) {
+//   // Map<int,int> mapCollectedGems = Helpers().getMapOfCollectedGems(gamePlayState);
+//   List<int> uniqueGems = Helpers().getUniqueGems(gamePlayState);
 
-  List<int> previousGems = [];
-  for (int i=0;i<gamePlayState.previousLevelObstacleData.length; i++) {
-    int colorKey = gamePlayState.previousLevelObstacleData[i]["colorKey"];
-    if (colorKey !=0 && !previousGems.contains(colorKey)) {
-      previousGems.add(colorKey);
-    }
-  }
+//   List<int> previousGems = [];
+//   for (int i=0;i<gamePlayState.previousLevelObstacleData.length; i++) {
+//     int colorKey = gamePlayState.previousLevelObstacleData[i]["colorKey"];
+//     if (colorKey !=0 && !previousGems.contains(colorKey)) {
+//       previousGems.add(colorKey);
+//     }
+//   }
   
-  List<Widget> widgets = [];
-  for (int i=0; i<uniqueGems.length; i++) {
-    int gemId = uniqueGems[i];
-    // Widget item = getCollectedGem(gamePlayState,gemId,animationState);
-    int order = previousGems.indexOf(gemId);
-    List<int> scores = Helpers().getCollectedGems(gamePlayState, gemId);
-    Widget item = GemScoreboardItemAnimation(index:gemId, order: order, scoreData:scores,  animationState: animationState,);
-    // Widget item = Container(
-    //   width: 50,
-    //   height:150,
-    //   color: gamePlayState.colors[i],
-    // );
-    widgets.add(item);
-  }
-  return widgets;
-} 
+//   List<Widget> widgets = [];
+//   for (int i=0; i<uniqueGems.length; i++) {
+//     int gemId = uniqueGems[i];
+//     // Widget item = getCollectedGem(gamePlayState,gemId,animationState);
+//     int order = previousGems.indexOf(gemId);
+//     List<int> scores = Helpers().getCollectedGems(gamePlayState, gemId);
+//     Widget item = GemScoreboardItemAnimation(index:gemId, order: order, scoreData:scores,  animationState: animationState,);
+//     // Widget item = Container(
+//     //   width: 50,
+//     //   height:150,
+//     //   color: gamePlayState.colors[i],
+//     // );
+//     widgets.add(item);
+//   }
+//   return widgets;
+// } 
 

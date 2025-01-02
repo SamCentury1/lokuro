@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lokuro/components/shimmer.dart';
 import 'package:lokuro/functions/general.dart';
 import 'package:lokuro/models/campaign_model.dart';
 import 'package:lokuro/providers/game_play_state.dart';
@@ -72,35 +73,38 @@ class _HomeScreenState extends State<HomeScreen> {
               return SafeArea(
                 child: Scaffold(
                   backgroundColor: const Color.fromARGB(255, 65, 65, 65),
-                  body: Center(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            // width: ,
-                            // height: settingsState.playAreaSize.height*0.2,
-                            height: MediaQuery.of(context).size.height*0.15,
-                            child: const Center(
-                              child: Text(
-                                "Lokuro",
-                                style: TextStyle(
-                                  fontSize: 32,
-                                  color: const Color.fromARGB(255, 230, 228, 228)
+                  body: Shimmer(
+                    linearGradient: _shimmerGradient,
+                    child: Center(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              // width: ,
+                              // height: settingsState.playAreaSize.height*0.2,
+                              height: MediaQuery.of(context).size.height*0.15,
+                              child: const Center(
+                                child: Text(
+                                  "Lokuro",
+                                  style: TextStyle(
+                                    fontSize: 32,
+                                    color: const Color.fromARGB(255, 230, 228, 228)
+                                  ),
                                 ),
                               ),
+                              
                             ),
-                            
-                          ),
-
-
-                          Column(
-                            children: displayCampaigns(settings, settingsState),
-                          )                                                                           
-                        ],
-                      ),
-                    )
+                    
+                    
+                            Column(
+                              children: displayCampaigns(settings, settingsState),
+                            )                                                                           
+                          ],
+                        ),
+                      )
+                    ),
                   ),
                 ),
               );
@@ -144,3 +148,20 @@ List<Widget> displayCampaigns(SettingsController settings, SettingsState setting
   }
   return res;
 }
+
+
+const _shimmerGradient = LinearGradient(
+  colors: [
+    Color.fromARGB(255, 185, 185, 185),
+    Color.fromARGB(255, 173, 173, 173),
+    Color.fromARGB(255, 184, 184, 184),
+  ],
+  stops: [
+    0.1,
+    0.3,
+    0.4,
+  ],
+  begin: Alignment(-1.0, -0.3),
+  end: Alignment(1.0, 0.3),
+  tileMode: TileMode.clamp,
+);

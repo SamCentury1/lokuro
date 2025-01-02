@@ -3,6 +3,7 @@ import 'package:lokuro/functions/general.dart';
 import 'package:lokuro/providers/animation_state.dart';
 import 'package:lokuro/providers/game_play_state.dart';
 import 'package:lokuro/providers/settings_state.dart';
+import 'package:lokuro/screens/game_over_screen.dart/game_over_screen.dart';
 import 'package:lokuro/settings/settings_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -38,10 +39,22 @@ class _LevelPassedDialogState extends State<LevelPassedDialog> {
         int campaignId = gamePlayState.campaignKey!;
         int nextLevel = gamePlayState.levelKey! + 1;
         gamePlayState.setLevelTransition([gamePlayState.levelKey!,nextLevel]);
-        General().navigateToNextLevel(context, campaignId, nextLevel, settingsState, gamePlayState, animationState,settings);
-        Navigator.of(context).pop();        
+
+        // animationState.setShouldRunCountGemsAnimation(true);
+        
+        if (nextLevel == gamePlayState.currentCampaignState.levels.length) {
+          print("go to this new thing??");
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const GameOverScreen())
+          );  
+        } else {
+          General().navigateToNextLevel(context, campaignId, nextLevel, settingsState, gamePlayState, animationState,settings);
+          Navigator.of(context).pop();        
+        }
+
       }
     });
+    
   }
 
 

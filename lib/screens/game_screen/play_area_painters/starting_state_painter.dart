@@ -71,7 +71,14 @@ class StartingStatePainter extends CustomPainter {
 
         Paint obstaclePaint = General().getObstaclePaint(origin2, obstacleObject, gamePlayState, opacity,0);
         canvas.drawPath(obstaclePath,obstaclePaint);
-        List<Map<String,dynamic>> jewelData = General().getJewelShapeData(origin2, obstacleObject, size, gamePlayState, opacity, 0.5);
+
+        // Paint redPaint = Paint();
+        // redPaint.color = Colors.red;
+        // canvas.drawCircle(origin, 3.0, redPaint);
+
+
+        // List<Map<String,dynamic>> jewelData = General().getJewelShapeData(origin2, obstacleObject, size, gamePlayState, opacity, 0.5);
+        List<Map<String,dynamic>> jewelData = General().getJewelShapeData2(origin2, obstacleObject, size, gamePlayState, opacity, 0.5);
         for (int i=0; i<jewelData.length; i++) {
           Map<String,dynamic> jewelPiece = jewelData[i];
           Path jewelPiecePath = jewelPiece["path"];
@@ -103,6 +110,10 @@ class StartingStatePainter extends CustomPainter {
       }
 
     }
+
+
+    /// TESTING
+    
 
 
   }

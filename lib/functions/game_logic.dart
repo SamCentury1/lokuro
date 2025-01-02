@@ -166,6 +166,7 @@ class GameLogic {
     });
 
     gamePlayState.setPreviousLevelObstacleData(gamePlayState.obstacleData);
+  
 
     if (gamePlayState.isLevelPassed) {
       print("LEVEL PASSED DAWG");

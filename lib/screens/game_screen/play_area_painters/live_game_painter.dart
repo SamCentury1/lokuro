@@ -91,7 +91,9 @@ class LiveGamePainter extends CustomPainter {
 
 
         Offset origin = General().getOrigin(obstacleObject, size);
-        List<Map<String,dynamic>> jewelData = General().getJewelShapeData(origin, obstacleObject, size, gamePlayState, opacity, 0.5);
+        Paint obstaclePaint = General().getObstaclePaint(origin, obstacleObject, gamePlayState, opacity,0);
+        canvas.drawPath(obstaclePath,obstaclePaint);
+        List<Map<String,dynamic>> jewelData = General().getJewelShapeData2(origin, obstacleObject, size, gamePlayState, opacity, 0.5);
         for (int i=0; i<jewelData.length; i++) {
           Map<String,dynamic> jewelPiece = jewelData[i];
           Path jewelPiecePath = jewelPiece["path"];

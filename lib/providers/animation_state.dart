@@ -12,4 +12,12 @@ class AnimationState extends ChangeNotifier {
   }
 
 
+  late bool _shouldRunCountGemsAnimation = false;
+  bool get shouldRunCountGemsAnimation => _shouldRunCountGemsAnimation;
+  void setShouldRunCountGemsAnimation(bool value) {
+    _shouldRunCountGemsAnimation = value;
+    notifyListeners();
+  }  
+
+
 }

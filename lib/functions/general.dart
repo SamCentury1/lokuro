@@ -9,6 +9,7 @@ import 'package:lokuro/models/level_model.dart';
 import 'package:lokuro/providers/animation_state.dart';
 import 'package:lokuro/providers/game_play_state.dart';
 import 'package:lokuro/providers/settings_state.dart';
+import 'package:lokuro/screens/game_over_screen.dart/game_over_screen.dart';
 import 'package:lokuro/screens/game_screen/game_screen.dart';
 import 'package:lokuro/screens/home_screen/home_screen.dart';
 import 'package:lokuro/settings/settings_controller.dart';
@@ -83,9 +84,12 @@ void navigateToNextLevel(
   final int newCoins = rand.nextInt(40)+80;
   final int currentCoinsSum = gamePlayState.coinsCollected.last;
   final int totalCoins = currentCoinsSum+newCoins;
-  gamePlayState.setCoinsCollected([...gamePlayState.coinsCollected,totalCoins]);  
+  gamePlayState.setCoinsCollected([...gamePlayState.coinsCollected,totalCoins]);
+        // check if the level was the last in the list
+
   initializeGame(context,campaignId,levelId,settingsState,gamePlayState,settings);
   animationState.setShouldRunGameStartedAnimation(true);
+  
 }
 
 
@@ -195,7 +199,7 @@ void initializeGame(
 
 
   // List<Map<String,dynamic>> getOffsets(Offset origin, List<Map<String,dynamic>> points, Size size, double distanceFactor) {
-  List<Map<String,dynamic>> getOffsets(Offset origin, List<dynamic> points, Size size, double distanceFactor, double innerJewelGap, double cornerGap ) {
+  List<Map<String,dynamic>> getOffsets(Offset origin, List<dynamic> points, Size size, double distanceFactor) {
     List<Map<String,dynamic>> res = [];
 
     for (int index=0; index<points.length; index++) {
@@ -209,7 +213,7 @@ void initializeGame(
       final Offset currentPoint = getCoordinatesFromDistanceAndAngle(origin, point1, size,distanceFactor);
       final Offset nextPoint = getCoordinatesFromDistanceAndAngle(origin, point2, size,distanceFactor);      
 
-      final Map<String,dynamic> adjacents = getAdjacents(previousPoint,currentPoint,nextPoint,index,cornerGap);
+      final Map<String,dynamic> adjacents = getAdjacents(previousPoint,currentPoint,nextPoint,index,0.0);
       res.add(adjacents);
     }
     return res;
@@ -291,7 +295,7 @@ void initializeGame(
     //     obstaclePath.lineTo(point.dx, point.dy);
     //   }
     // } else {
-      List<Map<String,dynamic>> allPoints = getOffsets(origin2, obstacle["data"],size, 1.0, obstacle["innerJewelSize"], obstacle["jewelCornerSize"]);
+      List<Map<String,dynamic>> allPoints = getOffsets(origin2, obstacle["data"],size, 1.0,);
       Map<String,dynamic> firstPoints = allPoints[0];
       obstaclePath.moveTo(firstPoints["previous"].dx,firstPoints["previous"].dy);
       obstaclePath.quadraticBezierTo(
@@ -332,7 +336,7 @@ void initializeGame(
     //   }
     // } else {
       
-      List<Map<String,dynamic>> allPoints = getOffsets(origin, obstacle["data"],size, 1.0,obstacle["innerJewelSize"],obstacle["jewelCornerSize"]);
+      List<Map<String,dynamic>> allPoints = getOffsets(origin, obstacle["data"],size, 1.0,);
       Map<String,dynamic> firstPoints = allPoints[0];
       obstaclePath.moveTo(firstPoints["previous"].dx,firstPoints["previous"].dy);
       obstaclePath.quadraticBezierTo(
@@ -460,27 +464,28 @@ void initializeGame(
 
 
   List<Map<String,dynamic>> addPathToObstacles(List<Map<String,dynamic>> obstacles, Size size,) {
-    final Random random = Random();
+    // final Random random = Random();
     for (int i=0; i<obstacles.length; i++) {
       if (i != 0) {
         late Map<String,dynamic> obstacle = obstacles[i];
         final Offset origin = getOrigin(obstacle, size);
-        final double innerJewelSize = (random.nextInt(30)+30)/100;
-        final double jewelCornerSize = (random.nextInt(10)+5)/100;
+        // final double innerJewelSize = (random.nextInt(30)+30)/100;
+        // final double jewelCornerSize = (random.nextInt(10)+5)/100;
 
-        
+        obstacles[i]["data"] = getPointData(obstacle);
         if (obstacle["isCircle"]) {
           obstacle.update("data", (v) => updateCirclePointData(obstacle,origin,size,24));
         }
 
+        
         List<Offset> points = [];
-        for (int j=0; j<obstacle["data"].length; j++) {
-          final Map<String,dynamic> point = obstacle["data"][j];
+        for (int j=0; j<obstacles[i]["data"].length; j++) {
+          final Map<String,dynamic> point = obstacles[i]["data"][j];
           final Offset pointOffset = getCoordinatesFromDistanceAndAngle(origin, point, size, 1.0);
           points.add(pointOffset);
         }
-        obstacles[i]["innerJewelSize"] = innerJewelSize;
-        obstacles[i]["jewelCornerSize"] = jewelCornerSize;
+        // obstacles[i]["innerJewelSize"] = innerJewelSize;
+        // obstacles[i]["jewelCornerSize"] = jewelCornerSize;
         obstacles[i]["points"] = points;
         Path shapeData = getShapeData(origin, obstacles[i],size);
         obstacles[i]["path"] = shapeData;
@@ -488,6 +493,31 @@ void initializeGame(
       }
     }
     return obstacles;
+  }
+
+  List<Map<String,dynamic>> getPointData(Map<String,dynamic> obstacle) {
+    // Random random = Random();
+    final int faces = obstacle["faces"];
+    final double factor = obstacle["factor"];
+    final double angleMultiplier = obstacle["angleMultiplier"];
+    final int angleStep = obstacle["angleStep"];
+    final double originalDistance = obstacle["distance"];
+    final double distanceMultiplier = obstacle["distanceMultiplier"];
+    final int distanceStep = obstacle["distanceStep"];
+    late double startingIncline = obstacle["incline"];
+    late double count = startingIncline;
+    late List<Map<String,dynamic>> data = [];
+    for (int i=0; i<faces; i++) {
+      final double angleFactor = (i%angleStep)==0 ? (1+angleMultiplier) : (1-angleMultiplier);
+      final double distanceFactor = (i%distanceStep)==0 ? (1+distanceMultiplier):(1-distanceMultiplier);
+      final double distance =  double.parse((originalDistance*distanceFactor).toStringAsFixed(2));
+      final double angle = double.parse(((360/faces) * angleFactor).toStringAsFixed(2));
+      count = count+angle;
+      final Map<String,dynamic> pointData = {"key": i, "distance": distance, "angle": count, "factor": factor};
+      // print("obstacle: ${obstacle["key"]} => ${pointData}");
+      data.add(pointData);
+    } 
+    return data;
   }
 
   List<Map<String,dynamic>> addPathToBoundaries(List<Map<String,dynamic>> boundaries, Size size,) {
@@ -537,12 +567,12 @@ void initializeGame(
       // Offset((minX + maxX) / 2, minY), // Top-center of the shape
       // Offset((minX + maxX) / 2, maxY), // Bottom-center of the shape
           [
-            color.withOpacity(opacity),
+            color.withAlpha((255*opacity).floor()),
             Color.lerp(
-              color.withOpacity(opacity), 
-              Colors.white.withOpacity(opacity), 
-              0.5
-            ) ?? color.withOpacity(opacity),
+              color.withAlpha((255*opacity).floor()), 
+              const Color.fromARGB(255, 43, 43, 43).withAlpha((255*opacity).floor()), 
+              0.2
+            ) ?? color.withAlpha((255*opacity).floor()),
           ],
     );
     obstaclePaint.style = PaintingStyle.fill;
@@ -556,10 +586,10 @@ void initializeGame(
 
     // get the points of the shape outer shape, and n smaller
     // final Offset origin = getOrigin(obstacle,size);
-    double innerJewelGap = obstacle["innerJewelSize"];
-    double cornerGap = obstacle["jewelCornerSize"];
-    List<Map<String,dynamic>> innerShapePoints = getOffsets(origin, obstacle["data"], size, sizeFactor, innerJewelGap,cornerGap);
-    List<Map<String,dynamic>> outerShapePoints = getOffsets(origin, obstacle["data"], size, 1.0, 1.0, cornerGap);
+    // double innerJewelGap = obstacle["innerJewelSize"];
+    // double cornerGap = obstacle["jewelCornerSize"];
+    List<Map<String,dynamic>> innerShapePoints = getOffsets(origin, obstacle["data"], size, sizeFactor, );
+    List<Map<String,dynamic>> outerShapePoints = getOffsets(origin, obstacle["data"], size, 1.0, );
 
     for (int index=0; index<obstacle["data"].length; index++) {
       int nextIndex = index+1 == obstacle["data"].length ? 0 : index+1;
@@ -642,6 +672,147 @@ void initializeGame(
 
     return obstacleFaces;
   }
+
+
+List<Map<String,dynamic>> getJewelShapeData2(
+  Offset origin, 
+  Map<String,dynamic> obstacle, 
+  Size size, 
+  GamePlayState gamePlayState,
+  double opacity, 
+  double sizeFactor,
+  ) {
+    List<Map<String,dynamic>> obstacleFaces = [];
+    List<Map<String,dynamic>> outsideFaces = [];
+    // List<Map<String,dynamic>> insideFaces = [];
+    Color gemColor = gamePlayState.colors[obstacle["colorKey"]];
+
+    /// get each of the faces;
+    // List<Map<String,dynamic>> pointData = obstacle["data"];
+
+    List<double> outsideDistances = [];
+    // List<double> insideDistances = [];
+
+    const double ubpct = 0.9; // upper boundary paint percent
+    const double lbpct = 0.5; // lower boundary paint percent
+
+
+    for (int i=0; i<obstacle["data"].length; i++) {
+      int currentIndex = i;
+      int nextIndex = (i+1) == obstacle["data"].length ? 0 : (i+1);
+
+      final double currentAngle = obstacle["data"][currentIndex]["angle"];
+      final double currentOutsideDistance = obstacle["data"][currentIndex]["distance"];
+      final double currentFactor = obstacle["data"][currentIndex]["factor"];
+      final double currentInsideDistance = double.parse((currentOutsideDistance*currentFactor).toStringAsFixed(2));
+      
+      final Offset point1 = getCoordinatesFromDistanceAndAngle(origin, {"angle": currentAngle, "distance": currentOutsideDistance}, size, 1.0);
+      final Offset point4 = getCoordinatesFromDistanceAndAngle(origin, {"angle": currentAngle, "distance": currentInsideDistance}, size, 1.0);
+
+      final double nextAngle = obstacle["data"][nextIndex]["angle"];
+      final double nextOutsideDistance = obstacle["data"][nextIndex]["distance"];
+      final double nextFactor = obstacle["data"][nextIndex]["factor"];
+      final double nextInsideDistance = double.parse((nextOutsideDistance*nextFactor).toStringAsFixed(2));
+
+      final Offset point2 = getCoordinatesFromDistanceAndAngle(origin, {"angle": nextAngle, "distance": nextOutsideDistance}, size, 1.0);
+      final Offset point3 = getCoordinatesFromDistanceAndAngle(origin, {"angle": nextAngle, "distance": nextInsideDistance}, size, 1.0);
+
+      final List<Offset> outsideFacePoints = [point1,point2,point3,point4];
+      // final List<Offset> insideFacePoints = [origin,point3,point4];
+
+      const Offset corner = Offset(10000.0,-10000.0);
+      final double outsideFaceDistance = getAverageDistanceBetweenJewelFaceAndCorner(corner,outsideFacePoints);
+      outsideDistances.add(outsideFaceDistance);
+      
+      // final double insideFaceDistance = getAverageDistanceBetweenJewelFaceAndCorner(corner,insideFacePoints);
+      // insideDistances.add(insideFaceDistance);
+
+      // outside face is a rectangle
+      Path outsidePath = Path();
+      outsidePath.moveTo(point1.dx, point1.dy);
+      outsidePath.lineTo(point2.dx, point2.dy);
+      outsidePath.lineTo(point3.dx, point3.dy);
+      outsidePath.lineTo(point4.dx, point4.dy);
+      outsidePath.close();
+      final Map<String,dynamic> outsideFaceData = {
+        "points": outsideFacePoints, 
+        "distance": outsideFaceDistance, 
+        "path": outsidePath,
+        "outside": true,
+      };
+      outsideFaces.add(outsideFaceData);
+
+      // // inside face is a triangle connecting the inside points to the origin
+      // Path insidePath = Path();
+      // insidePath.moveTo(origin.dx, origin.dy);
+      // insidePath.lineTo(point3.dx, point3.dy);
+      // insidePath.lineTo(point4.dx, point4.dy);
+      // insidePath.close();      
+      // final Map<String,dynamic> insideFaceData = {
+      //   "points": insideFacePoints, 
+      //   "distance": insideFaceDistance,
+      //   "path": insidePath,
+      //   "outside": false, 
+      // };
+      // insideFaces.add(insideFaceData);
+      
+    }
+
+
+    double shortestDistanceOutside = outsideDistances.reduce(min);
+    double longestDistanceOutside = outsideDistances.reduce(max);
+    double differenceOutside = longestDistanceOutside-shortestDistanceOutside;
+
+    outsideFaces.sort((a, b) => a["distance"].compareTo(b["distance"]));
+
+
+    // double shortestDistanceInside = insideDistances.reduce(min);
+    // double longestDistanceInside = insideDistances.reduce(max);
+    // double differenceInside = longestDistanceInside-shortestDistanceInside;
+
+    for (int i=0; i<outsideFaces.length; i++) {
+      final double distanceFromFirst = outsideFaces[i]["distance"]-shortestDistanceOutside;
+      // final double percentDistanceFromFirst = distanceFromFirst/differenceOutside;
+      final double rankAsPercentage = i/outsideFaces.length;
+      final double percentWhiteness = rankAsPercentage*(ubpct-lbpct)+lbpct;
+
+      Color color = Color.lerp(gemColor, Colors.black, 0.1)??gemColor;
+      Paint paint = Paint();
+      paint.color = Color.lerp(
+        Colors.white.withAlpha((255*opacity).floor()), 
+        color.withAlpha((255*opacity).floor()), 
+        percentWhiteness)??
+        gemColor.withAlpha((255*opacity).floor());
+      outsideFaces[i]["paint"] = paint;
+      obstacleFaces.add(outsideFaces[i]);
+    }
+
+
+    // for (int i=0; i<insideFaces.length; i++) {
+    //   final double distanceFromFirst = insideFaces[i]["distance"]-shortestDistanceOutside;
+    //   final double percentDistanceFromFirst = distanceFromFirst/differenceInside;
+    //   final double percentWhiteness = percentDistanceFromFirst*(ubpct-lbpct)+lbpct;
+    //   Paint paint = Paint();
+    //   paint.color = Color.lerp(Colors.white, gemColor, percentWhiteness)??gemColor;
+    //   insideFaces[i]["paint"] = paint;
+    //   obstacleFaces.add(insideFaces[i]);
+    // }
+    return obstacleFaces;
+}
+
+
+double getAverageDistanceBetweenJewelFaceAndCorner(Offset corner, List<Offset> pointsList) {
+  double countOfDistance = 0.0;
+  for (int i=0; i<pointsList.length; i++) {
+    final Offset point = pointsList[i];
+    final double distanceBetweenPoints = Helpers().calculateDistanceBetweenTwoPoints(point, corner);
+    countOfDistance = countOfDistance + distanceBetweenPoints;
+  }
+  final double res = (countOfDistance / pointsList.length);
+  return res;
+}
+
+
 
 
 

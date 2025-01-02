@@ -215,7 +215,7 @@ class GamePlayState extends ChangeNotifier {
     const Color.fromARGB(255, 1, 65, 1),
     const Color.fromARGB(255, 197, 137, 8),
     const Color.fromARGB(255, 3, 82, 146),
-    const Color.fromARGB(255, 2, 11, 19),
+    const Color.fromARGB(255, 16, 152, 141),
   ];
   List<Color> get colors => _colors;
 
