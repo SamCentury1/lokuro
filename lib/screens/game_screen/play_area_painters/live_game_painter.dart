@@ -28,7 +28,7 @@ class LiveGamePainter extends CustomPainter {
         late double opacity = 1.0;
         late double explosionOpacity = 0.0;
 
-        late Color blockColor = gamePlayState.colors[obstacleObject["colorKey"]];
+        late Color blockColor = gamePlayState.gemstoneData[obstacleObject["colorKey"]]["color"];
       
         bool isBlockAnimating = Helpers().getIsBlockAnimating(gamePlayState,obstacleObject["key"]);
 

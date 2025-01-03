@@ -146,7 +146,7 @@ class Helpers {
 
   List<Widget> displayTargetObstacles(GamePlayState gamePlayState, double widgetWidth) {
     List<Widget> res = [];
-    List<Color> colors = gamePlayState.colors;
+    List<Color> colors = gamePlayState.gemstoneData.map((a) => a["color"] as Color).toList();
 
     double targetWidth = widgetWidth/gamePlayState.obstacleData.length;
     late double widgetSize = targetWidth > 40 ? 40 : targetWidth;
@@ -820,6 +820,29 @@ class Helpers {
 
     return counts;
   }
+
+  String formatDigits(double value) {
+    List<String> stripped = value.toString().split(".");
+    String mainDigits = stripped[0];
+    String decimals = stripped[1];
+    
+    List<String> numbers = mainDigits.split("");
+    List<String> reversedNumbers = numbers.reversed.toList();
+    
+    List<String> newArrayReversed = [];
+    for (int i=0; i<reversedNumbers.length; i++) {
+      var item = reversedNumbers[i];
+      if (i%3 == 0 && i != 0) {
+        newArrayReversed.add(",");
+      }
+      newArrayReversed.add(item);
+    }
+    List<String> newArray = newArrayReversed.reversed.toList();
+    String leftDigits = newArray.join();
+    final String res = "$leftDigits.$decimals";
+    return res;
+  }
+
 
   List<int> getCollectedGems(GamePlayState gamePlayState, int gem,) {
     int level = gamePlayState.levelKey!;

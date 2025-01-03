@@ -47,24 +47,27 @@ class _CoinCollectorState extends State<CoinCollector> {
   }
   void startTimer() {
     const int inc = 10;
+    final int stops = (1500/inc).floor();
+    
 
     final List<int> coins = widget.gamePlayState.coinsCollected;
     final int previousIndex = coins.length==1 ? coins.length-1:coins.length-2;
     final int currentIndex = coins.length-1;
     final int previousAmount = coins[previousIndex]; 
     final int newAmount = coins[currentIndex]; 
+    final int countIncrement = ((newAmount-previousAmount)/stops).floor();
     counter = previousAmount;    
 
     Timer.periodic(const Duration(milliseconds: inc), (Timer timer) {
 
-      if (counter == newAmount) {
+      if (counter >= newAmount) {
         timer.cancel();
-        // setState(() {
-        //   counter = 0;
-        // });
+        setState(() {
+          counter = newAmount;
+        });
       } else {
         setState(() {
-          counter++;
+          counter = counter + countIncrement;
         });            
       }
     });

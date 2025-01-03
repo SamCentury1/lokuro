@@ -80,11 +80,11 @@ void navigateToNextLevel(
   AnimationState animationState,
   SettingsController settings,
 ) {
-  Random rand = Random();
-  final int newCoins = rand.nextInt(40)+80;
-  final int currentCoinsSum = gamePlayState.coinsCollected.last;
-  final int totalCoins = currentCoinsSum+newCoins;
-  gamePlayState.setCoinsCollected([...gamePlayState.coinsCollected,totalCoins]);
+  // Random rand = Random();
+  // final int newCoins = rand.nextInt(40)+80;
+  // final int currentCoinsSum = gamePlayState.coinsCollected.last;
+  // final int totalCoins = currentCoinsSum+newCoins;
+  // gamePlayState.setCoinsCollected([...gamePlayState.coinsCollected,totalCoins]);
         // check if the level was the last in the list
 
   initializeGame(context,campaignId,levelId,settingsState,gamePlayState,settings);
@@ -559,7 +559,7 @@ void initializeGame(
     ];
 
 
-    Color color = gamePlayState.colors[obstacleObject["colorKey"]];
+    Color color = gamePlayState.gemstoneData[obstacleObject["colorKey"]]["color"];
     Paint obstaclePaint = Paint();
     obstaclePaint.shader = ui.Gradient.linear(
       alignments[alignment][0],
@@ -685,7 +685,7 @@ List<Map<String,dynamic>> getJewelShapeData2(
     List<Map<String,dynamic>> obstacleFaces = [];
     List<Map<String,dynamic>> outsideFaces = [];
     // List<Map<String,dynamic>> insideFaces = [];
-    Color gemColor = gamePlayState.colors[obstacle["colorKey"]];
+    Color gemColor = gamePlayState.gemstoneData[obstacle["colorKey"]]["color"];
 
     /// get each of the faces;
     // List<Map<String,dynamic>> pointData = obstacle["data"];

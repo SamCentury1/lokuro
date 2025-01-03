@@ -152,6 +152,41 @@ class GameLogic {
     }
   }
 
+  void logLevelSummary(GamePlayState gamePlayState) {
+    
+    List<int> boundariesHit = [];
+    
+    
+    for (int i=0; i<gamePlayState.boundaryHitData.length; i++) {
+      boundariesHit.add(gamePlayState.boundaryHitData[i]["key"]);
+    }
+
+    double purityPercentage = (100.00 - boundariesHit.length)/100 < 0.5 ? 0.5 :(100.00 - boundariesHit.length)/100;
+
+    final int currentCoinsSum = gamePlayState.coinsCollected.last;
+    late int totalCoins = currentCoinsSum;
+    List<Map<String,dynamic>> obstaclesHit = [];
+    for (int i=0; i<gamePlayState.obstacleHitOrder.length; i++) {
+      int colorKey = gamePlayState.obstacleHitOrder[i]["colorKey"];
+      Map<String,dynamic> jewelObject = gamePlayState.gemstoneData[colorKey];
+      double jewelValue = jewelObject["value"] * purityPercentage;
+      totalCoins = (totalCoins+jewelValue).floor();
+      obstaclesHit.add({"key": colorKey, "value": jewelValue});
+    }
+
+
+    Map<String,dynamic> levelSummary = {
+      "levelId": gamePlayState.levelKey,
+      "boundaries": boundariesHit,
+      "jewels": obstaclesHit,
+    };
+
+
+    
+    gamePlayState.setCoinsCollected([...gamePlayState.coinsCollected,totalCoins]);    
+    gamePlayState.setLevelSummary([...gamePlayState.levelSummary, levelSummary]);
+  }
+
   Future<void> showGameOverDialog(BuildContext context, GamePlayState gamePlayState) async {
     int count = 0;
     int stops = 100;
@@ -170,6 +205,9 @@ class GameLogic {
 
     if (gamePlayState.isLevelPassed) {
       print("LEVEL PASSED DAWG");
+
+        logLevelSummary(gamePlayState);
+
       // Future.delayed(const Duration(milliseconds: 850), () async {
         showDialog(
           context: context,

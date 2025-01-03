@@ -107,7 +107,7 @@ class _GemScoreboardItemState extends State<GemScoreboardItem> {
         final double playAreaWidth = settingsState.playAreaSize.width;
         List<int> uniqueGems = Helpers().getUniqueGems(gamePlayState);
         final double gemCollectorWidth = playAreaWidth * (0.7)/uniqueGems.length;         
-        Color color = gamePlayState.colors[widget.index];
+        Color color = gamePlayState.gemstoneData[widget.index]["color"];
         final double progress = (val2/500);
 
         // final double parabollicCurveProgress = getParabollicCurveProgress(progress);

@@ -208,16 +208,44 @@ class GamePlayState extends ChangeNotifier {
     notifyListeners();
   }
 
-  final List<Color> _colors = [
-    Colors.transparent,
-    const Color.fromARGB(255, 114, 8, 0),
-    const Color.fromARGB(255, 75, 1, 104),
-    const Color.fromARGB(255, 1, 65, 1),
-    const Color.fromARGB(255, 197, 137, 8),
-    const Color.fromARGB(255, 3, 82, 146),
-    const Color.fromARGB(255, 16, 152, 141),
+
+
+  late List<Map<String,dynamic>> _levelSummary = [];
+  List<Map<String,dynamic>> get levelSummary => _levelSummary;
+  void setLevelSummary(List<Map<String,dynamic>> value) {
+    _levelSummary = value;
+    notifyListeners();
+  }
+
+
+
+  final List<Map<String,dynamic>> _gemstoneData = [
+    {"key": 0, "name": "", "color": Colors.transparent, "value": 0.0},
+    {"key": 1, "name": "Ruby", "color": const Color.fromARGB(255, 114, 8, 0), "value": 5000.0},
+    {"key": 2, "name": "Amethyst", "color": const Color.fromARGB(255, 75, 1, 104), "value": 3000.0},
+    {"key": 3, "name": "Emerald", "color": const Color.fromARGB(255, 1, 65, 1), "value": 4500.0},
+    {"key": 4, "name": "Amber", "color": const Color.fromARGB(255, 197, 137, 8), "value": 3000.0},
+    {"key": 5, "name": "Sapphire", "color": const Color.fromARGB(255, 10, 8, 131), "value": 6000.0},
+    {"key": 6, "name": "Aquamarine", "color": const Color.fromARGB(255, 16, 152, 141), "value": 2500.0},
+    {"key": 7, "name": "Moonstone", "color": const Color.fromARGB(255, 189, 199, 198), "value": 1500.0},
+    {"key": 8, "name": "Spinel", "color": const Color.fromARGB(255, 201, 90, 158),  "value": 4500.0},
+    {"key": 9, "name": "Ionite", "color": const Color.fromARGB(255, 29, 3, 54),  "value": 3500.0},
   ];
-  List<Color> get colors => _colors;
+  List<Map<String,dynamic>> get gemstoneData => _gemstoneData;
+
+  // final List<Color> _colors = [
+  //   Colors.transparent,
+  //   const Color.fromARGB(255, 114, 8, 0),
+  //   const Color.fromARGB(255, 75, 1, 104),
+  //   const Color.fromARGB(255, 1, 65, 1),
+  //   const Color.fromARGB(255, 197, 137, 8),
+  //   const Color.fromARGB(255, 3, 82, 146),
+  //   const Color.fromARGB(255, 16, 152, 141),
+  //   const Color.fromARGB(255, 189, 199, 198),
+  //   const Color.fromARGB(255, 201, 90, 158), 
+  //   const Color.fromARGB(255, 29, 3, 54), 
+  // ];
+  // List<Color> get colors => _colors;
 
   // late double? incrementX = _playAreaSize!.width * 0.01;
   // late double? incrementY = _playAreaSize!.height * 0.01;
