@@ -824,7 +824,7 @@ class Helpers {
   String formatDigits(double value) {
     List<String> stripped = value.toString().split(".");
     String mainDigits = stripped[0];
-    String decimals = stripped[1];
+    String decimals = "00";
     
     List<String> numbers = mainDigits.split("");
     List<String> reversedNumbers = numbers.reversed.toList();

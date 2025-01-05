@@ -381,7 +381,7 @@
         "ownership": "Various private entities",        
         "campaignPhotoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Hiddenitecreek.jpg/250px-Hiddenitecreek.jpg", 
         "difficulty": 1,
-        "colors": ["0xFFEA9CDC", "0xFFE9B0A6", "0xFFFDB2E6", "0xFFC0CED3", "0xFF97A0C4", "0xFFECF3E2", "0xFFE1BBEA", "0xFFBBBEA4", "0xFFF2D9FC", "0xFF9FFFD4", "0xFF9FFFD4"],
+        "colors": ["0xFFEA9CDC", "0xFFE9B0A6", "0xFFFDB2E6", "0xFFC0CED3", "0xFF97A0C4", "0xFFECF3E2", "0xFFE1BBEA", "0xFFBBBEA4", "0xFFF2D9FC", "0xFF9FFFD4", "0xFFFDB2E6"],
         "levels": [
             {"order": [4, 4], "background": 5, "obstacles": [{"key": 1, "origin": [50.0, 40.0], "isCircle": false, "colorKey": 4, "active": true, "faces": 8, "factor": 0.64, "angleMultiplier": 0.36, "angleStep": 2, "distance": 10.0, "distanceMultiplier": 0.0, "distanceStep": 1, "incline": -14.0}, {"key": 2, "origin": [85.0, 20.0], "isCircle": false, "colorKey": 4, "active": true, "faces": 4, "factor": 0.74, "angleMultiplier": 0.3, "angleStep": 2, "distance": 14.0, "distanceMultiplier": 0.0, "distanceStep": 1, "incline": -52.0}], "boundaries": [], "levelId": 0}, 
             {"order": [4, 5], "background": 7, "obstacles": [{"key": 1, "origin": [15.0, 20.0], "isCircle": false, "colorKey": 4, "active": true, "faces": 4, "factor": 0.5, "angleMultiplier": 0.3, "angleStep": 2, "distance": 15.0, "distanceMultiplier": 0.0, "distanceStep": 1, "incline": -64.0}, {"key": 2, "origin": [50.0, 20.0], "isCircle": false, "colorKey": 5, "active": true, "faces": 8, "factor": 0.68, "angleMultiplier": 0.37, "angleStep": 2, "distance": 10.0, "distanceMultiplier": 0.0, "distanceStep": 1, "incline": -31.0}], "boundaries": [], "levelId": 1}, 

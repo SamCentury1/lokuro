@@ -25,7 +25,7 @@ class StartingStatePainter extends CustomPainter {
     if (gamePlayState.levelTransition[0] != null) {
       // final int previousLevel = gamePlayState.levelTransition[0]!;
       // final List<Map<String,dynamic>> previousObstacles = settingsState.levelData[previousLevel]["obstacles"];
-      Paint blackPaint = Paint()..color = Colors.black.withOpacity(0.2);
+      Paint blackPaint = Paint()..color = Colors.black.withAlpha((50 * (1.0-startingAnimation.value)).floor());
 
       // final double furthestYCoordinate = getFurthestYCoordinate(gamePlayState.previousLevelObstacleData);
 
@@ -35,7 +35,8 @@ class StartingStatePainter extends CustomPainter {
           // Offset origin = General().getOrigin(previousLevelObstacle, size);
           // canvas.drawCircle(origin, 2.0, blackPaint);
           Path previousObstaclePath = Path(); 
-          previousObstaclePath = General().getPreviousObstacleShape(previousLevelObstacle,size, (startingAnimation.value*settingsState.playAreaSize.height));
+          // previousObstaclePath = General().getPreviousObstacleShape(previousLevelObstacle,size, (startingAnimation.value*settingsState.playAreaSize.height));
+          previousObstaclePath = General().getPreviousObstacleShape(previousLevelObstacle,size);
           previousObstaclePath.close();
           canvas.drawPath(previousObstaclePath, blackPaint);
 
@@ -49,7 +50,7 @@ class StartingStatePainter extends CustomPainter {
 
         // final int index = (startingAnimation.value * (obstacleObject["startingAnimationOpacity"].length-1)).floor();
         // final double opacity =  obstacleObject["startingAnimationOpacity"][index];
-        final double opacity = 1.0;
+        final double opacity = startingAnimation.value;
 
         // Close the path to properly render the shadow
 
@@ -57,11 +58,11 @@ class StartingStatePainter extends CustomPainter {
         // double shadowOpacity = opacity < 0.9? 0.0 : opacity;
 
         Offset origin = General().getOrigin(obstacleObject, size);
-        double updatedYValue = (origin.dy + settingsState.playAreaSize.height) - startingAnimation.value*settingsState.playAreaSize.height;
-        Offset origin2 = Offset(origin.dx, updatedYValue);
+        // double updatedYValue = (origin.dy + settingsState.playAreaSize.height) - startingAnimation.value*settingsState.playAreaSize.height;
+        Offset origin2 = origin; // Offset(origin.dx, updatedYValue);
 
         // Path obstaclePath = obstacleObject["path"];
-        Path obstaclePath = General().getShapeData(origin2, obstacleObject, size);
+        Path obstaclePath = General().getShapeData(origin2, obstacleObject, size, 1.0);
         canvas.drawShadow(
           obstaclePath, 
           Color.lerp(Colors.transparent, Colors.black.withOpacity(opacity), opacity) ?? Colors.black.withOpacity(opacity),
@@ -69,8 +70,8 @@ class StartingStatePainter extends CustomPainter {
           false
         );          
 
-        Paint obstaclePaint = General().getObstaclePaint(origin2, obstacleObject, gamePlayState, opacity,0);
-        canvas.drawPath(obstaclePath,obstaclePaint);
+        // Paint obstaclePaint = General().getObstaclePaint(origin2, obstacleObject, gamePlayState, opacity,0);
+        // canvas.drawPath(obstaclePath,obstaclePaint);
 
         // Paint redPaint = Paint();
         // redPaint.color = Colors.red;
@@ -78,7 +79,15 @@ class StartingStatePainter extends CustomPainter {
 
 
         // List<Map<String,dynamic>> jewelData = General().getJewelShapeData(origin2, obstacleObject, size, gamePlayState, opacity, 0.5);
-        List<Map<String,dynamic>> jewelData = General().getJewelShapeData2(origin2, obstacleObject, size, gamePlayState, opacity, 0.5);
+
+        List<Map<String,dynamic>> jewelData = General().getJewelShapeData2(
+          origin2, 
+          obstacleObject, 
+          size, 
+          gamePlayState, 
+          opacity, 
+          startingAnimation.value
+        );
         for (int i=0; i<jewelData.length; i++) {
           Map<String,dynamic> jewelPiece = jewelData[i];
           Path jewelPiecePath = jewelPiece["path"];

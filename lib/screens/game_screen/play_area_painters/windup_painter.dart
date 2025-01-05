@@ -68,7 +68,7 @@ class WindupPainter extends CustomPainter {
         // List<Map<String,dynamic>> jewelData = General().getJewelShapeData(origin, obstacleObject, size, gamePlayState,1.0, 0.5);
         Paint obstaclePaint = General().getObstaclePaint(origin, obstacleObject, gamePlayState, 1.0,0);
         canvas.drawPath(obstaclePath,obstaclePaint);        
-        List<Map<String,dynamic>> jewelData = General().getJewelShapeData2(origin, obstacleObject, size, gamePlayState, 1.0, 0.5);
+        List<Map<String,dynamic>> jewelData = General().getJewelShapeData2(origin, obstacleObject, size, gamePlayState, 1.0, 1.0);
         
         // if (obstacleObject["isCircle"]) {
         //   Paint obstaclePaint = General().getObstaclePaint(obstacleObject, gamePlayState, 1.0);

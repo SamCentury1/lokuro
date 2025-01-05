@@ -184,7 +184,7 @@ class GamePlayState extends ChangeNotifier {
     notifyListeners();
   }  
 
-  late double _startingAnimationDurationInSeconds = 1.5;
+  late double _startingAnimationDurationInSeconds = 2.0;
   double get startingAnimationDurationInSeconds => _startingAnimationDurationInSeconds;
   // void setStartingAnimationDurationInSeconds(double value) {
   //   _startingAnimationDurationInSeconds = value;

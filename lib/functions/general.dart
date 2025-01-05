@@ -87,7 +87,10 @@ void navigateToNextLevel(
   // gamePlayState.setCoinsCollected([...gamePlayState.coinsCollected,totalCoins]);
         // check if the level was the last in the list
 
-  initializeGame(context,campaignId,levelId,settingsState,gamePlayState,settings);
+
+  if(levelId < gamePlayState.currentCampaignState.levels.length) {
+    initializeGame(context,campaignId,levelId,settingsState,gamePlayState,settings);
+  }
   animationState.setShouldRunGameStartedAnimation(true);
   
 }
@@ -117,32 +120,6 @@ void initializeGame(
   GamePlayState gamePlayState, 
   SettingsController settings
 ) async {
-  // Map<String, dynamic> levelData = Map<String, dynamic>.from(settingsState.levelData[index-1]);
-  // Map<String, dynamic> levelData = gamePlayState.levelData;
-  // Map<String, dynamic> levelData = Map<String, dynamic>.from(settingsState.levelData[index]);
-  // Map<String,dynamic> levelData = Map<String, dynamic>.from(settings.levelData.value[index]);
-  // levelData = settingsState.initialLevelState.copy();
-  // Map<String,dynamic> levelData = {
-  //   "levelId"
-  // };
-
-  // await settingsState.loadInitialStateForCampaign(settings, index);
-  // await settingsState.loadInitialStateForLevel(settings,index);
-  
-
-  // gamePlayState.startLevel(settingsState);
-
-  // Level levelData = gamePlayState.currentState;
-
-  // gamePlayState.setCampaignKey(campaignId);
-  // gamePlayState.setCurrentCampaignState(settings, campaignId);
-
-  // List<int> hitBoundaries = [];
-  // gamePlayState.boundaryData.forEach((val) {
-  //   if (!val["active"]) {
-  //     hitBoundaries.add(val["key"]);
-  //   }
-  // });
 
   // print(hitBoundaries);
   Helpers().resetBoundaryData(gamePlayState);
@@ -169,13 +146,6 @@ void initializeGame(
   List<Map<String, dynamic>> obstacleData = addPathToObstacles(obstacleDataWithBoundary, size);
   gamePlayState.setObstacleData(obstacleData);
 
-  // List<Map<String, dynamic>> rawBoundaryData = List<Map<String, dynamic>>.from(levelData.boundaries.map((e) => Map<String, dynamic>.from(e)));
-  // List<Map<String, dynamic>> rawBoundaryData = Helpers().generateBoundaryData(settingsState.playAreaSize);
-  // List<Map<String, dynamic>> rawBoundaryDataCopy = Helpers().deepCopy(rawBoundaryData);
-  // List<Map<String, dynamic>> boundaryData = addPathToBoundaries(rawBoundaryData, size);
-  // gamePlayState.setBoundaryData(boundaryData); 
-  // List<Map<String, dynamic>> boundaryDataCopy = Helpers().deepCopy(boundaryData);
-  // gamePlayState.setBoundaryDataCopy(boundaryDataCopy);
   gamePlayState.setIsLevelPassed(false);
   gamePlayState.setIsGameOver(false);  
 }
@@ -281,11 +251,11 @@ void initializeGame(
     return Offset(dx,dy);
   }
 
-  Path getPreviousObstacleShape(Map<String,dynamic> obstacle, Size size, double yIncrement) {
+  Path getPreviousObstacleShape(Map<String,dynamic> obstacle, Size size) {
 
     Path obstaclePath = Path();
     final Offset origin = getOrigin(obstacle, size);
-    final Offset origin2 = Offset(origin.dx, origin.dy-yIncrement);    
+    // final Offset origin2 = Offset(origin.dx, origin.dy-yIncrement);    
     // if (obstacle["isCircle"]) {
     //   List<Offset> circlePoints = getCircleOffsetData(obstacle,origin2, size);
     //   Offset firstPoint = circlePoints[0];
@@ -295,7 +265,7 @@ void initializeGame(
     //     obstaclePath.lineTo(point.dx, point.dy);
     //   }
     // } else {
-      List<Map<String,dynamic>> allPoints = getOffsets(origin2, obstacle["data"],size, 1.0,);
+      List<Map<String,dynamic>> allPoints = getOffsets(origin, obstacle["data"],size, 1.0,);
       Map<String,dynamic> firstPoints = allPoints[0];
       obstaclePath.moveTo(firstPoints["previous"].dx,firstPoints["previous"].dy);
       obstaclePath.quadraticBezierTo(
@@ -322,7 +292,7 @@ void initializeGame(
 
 
 
-  Path getShapeData(Offset origin, Map<String,dynamic> obstacle, Size size) {
+  Path getShapeData(Offset origin, Map<String,dynamic> obstacle, Size size, double sizeFactor) {
 
     // final Offset origin = getOrigin(obstacle, size);
     Path obstaclePath = Path();
@@ -336,7 +306,7 @@ void initializeGame(
     //   }
     // } else {
       
-      List<Map<String,dynamic>> allPoints = getOffsets(origin, obstacle["data"],size, 1.0,);
+      List<Map<String,dynamic>> allPoints = getOffsets(origin, obstacle["data"],size, sizeFactor,);
       Map<String,dynamic> firstPoints = allPoints[0];
       obstaclePath.moveTo(firstPoints["previous"].dx,firstPoints["previous"].dy);
       obstaclePath.quadraticBezierTo(
@@ -487,7 +457,7 @@ void initializeGame(
         // obstacles[i]["innerJewelSize"] = innerJewelSize;
         // obstacles[i]["jewelCornerSize"] = jewelCornerSize;
         obstacles[i]["points"] = points;
-        Path shapeData = getShapeData(origin, obstacles[i],size);
+        Path shapeData = getShapeData(origin, obstacles[i],size, 1.0);
         obstacles[i]["path"] = shapeData;
     
       }
@@ -741,23 +711,7 @@ List<Map<String,dynamic>> getJewelShapeData2(
         "outside": true,
       };
       outsideFaces.add(outsideFaceData);
-
-      // // inside face is a triangle connecting the inside points to the origin
-      // Path insidePath = Path();
-      // insidePath.moveTo(origin.dx, origin.dy);
-      // insidePath.lineTo(point3.dx, point3.dy);
-      // insidePath.lineTo(point4.dx, point4.dy);
-      // insidePath.close();      
-      // final Map<String,dynamic> insideFaceData = {
-      //   "points": insideFacePoints, 
-      //   "distance": insideFaceDistance,
-      //   "path": insidePath,
-      //   "outside": false, 
-      // };
-      // insideFaces.add(insideFaceData);
-      
     }
-
 
     double shortestDistanceOutside = outsideDistances.reduce(min);
     double longestDistanceOutside = outsideDistances.reduce(max);
@@ -786,6 +740,63 @@ List<Map<String,dynamic>> getJewelShapeData2(
       outsideFaces[i]["paint"] = paint;
       obstacleFaces.add(outsideFaces[i]);
     }
+
+    // get center piece
+    List<Offset> insidePoints = [];
+    for (int i=0; i<obstacle["data"].length; i++) {
+      double angle = obstacle["data"][i]["angle"];
+      double distance = obstacle["data"][i]["distance"]*obstacle["data"][i]["factor"];
+      Offset point = getCoordinatesFromDistanceAndAngle(origin, {"angle": angle, "distance": distance}, size, 1.0);
+      insidePoints.add(point);
+    }
+
+    Path insidePath = Path();
+    insidePath.moveTo(insidePoints[0].dx, insidePoints[0].dx);
+    for (int i=1; i<insidePoints.length; i++) {
+      insidePath.lineTo(insidePoints[i].dx, insidePoints[i].dy);
+    }
+
+    // Color color = gamePlayState.gemstoneData[obstacleObject["colorKey"]]["color"];
+
+    Map<String, dynamic> areaData = Helpers().getObstacleAreaData(origin);
+    double minX = areaData["x"][0];
+    double minY = areaData["y"][0];
+    double maxX = areaData["x"][areaData["x"].length-1];
+    double maxY = areaData["y"][areaData["y"].length-1];
+
+    List<List<Offset>> alignments = [
+      [Offset((minX + maxX) / 2, minY),Offset((minX + maxX) / 2, maxY), ],
+      [Offset((minX + maxX) / 2, maxY),Offset((minX + maxX) / 2, minY), ],
+    ];
+
+    Paint insideFacePaint = Paint();
+    insideFacePaint.shader = ui.Gradient.linear(
+      alignments[1][0],
+      alignments[1][1],
+      // Offset((minX + maxX) / 2, minY), // Top-center of the shape
+      // Offset((minX + maxX) / 2, maxY), // Bottom-center of the shape
+          [
+            gemColor.withAlpha((255*opacity).floor()),
+            Color.lerp(
+              gemColor.withAlpha((255*opacity).floor()), 
+              const Color.fromARGB(255, 43, 43, 43).withAlpha((255*opacity).floor()), 
+              0.2
+            ) ?? gemColor.withAlpha((255*opacity).floor()),
+          ],
+    );
+    insideFacePaint.style = PaintingStyle.fill;
+    final Map<String,dynamic> insideFaceData = {
+      "points": insidePoints, 
+      "distance": 1.0, 
+      "path": insidePath,
+      "outside": false,
+      "paint": insideFacePaint,
+    };
+    obstacleFaces.add(insideFaceData);
+    // canvas.drawPath(obstaclePath,obstaclePaint);        
+
+
+
 
 
     // for (int i=0; i<insideFaces.length; i++) {

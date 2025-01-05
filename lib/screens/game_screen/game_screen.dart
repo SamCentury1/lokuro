@@ -171,8 +171,8 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
     SettingsState settingsState = Provider.of<SettingsState>(context, listen: false);
     SettingsController settings = Provider.of<SettingsController>(context, listen: false);
 
-    final double playAreaWidth = settingsState.playAreaSize.width;
-    final double coinCollectorWidth = playAreaWidth * 0.2;
+    // final double playAreaWidth = settingsState.playAreaSize.width;
+    // final double coinCollectorWidth = playAreaWidth * 0.2;
 
 
 
@@ -210,31 +210,31 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                           height: 30,
                           // color: Colors.red,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                height: 2,
-                                child: Row(
-                                  children: [
-                                    AnimatedContainer(
-                                      duration: const Duration(milliseconds: 1500),
-                                      width: Helpers().getPercentCampaignCompleteBarWidth(gamePlayState,settingsState),
-                                      height: 2,
-                                      color: Colors.white,
-                                    ),                              
-                                  ],
-                                ),
-                              ),
+                              // SizedBox(
+                              //   height: 2,
+                              //   child: Row(
+                              //     children: [
+                              //       AnimatedContainer(
+                              //         duration: const Duration(milliseconds: 1500),
+                              //         width: Helpers().getPercentCampaignCompleteBarWidth(gamePlayState,settingsState),
+                              //         height: 2,
+                              //         color: Colors.white,
+                              //       ),                              
+                              //     ],
+                              //   ),
+                              // ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   CoinCollector(gamePlayState: gamePlayState, animationState: animationState,),
-
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children : getCollectedGems(gamePlayState,animationState),
-                                  ),
+                                  SizedBox()
+                                  // Row(
+                                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  //   children : getCollectedGems(gamePlayState,animationState),
+                                  // ),
                                 ],
                               ),
                             ],

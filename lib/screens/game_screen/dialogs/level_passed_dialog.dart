@@ -44,9 +44,11 @@ class _LevelPassedDialogState extends State<LevelPassedDialog> {
         
         if (nextLevel == gamePlayState.currentCampaignState.levels.length) {
           print("go to this new thing??");
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const GameOverScreen())
-          );  
+          Future.delayed(Duration(milliseconds: (gamePlayState.startingAnimationDurationInSeconds*1000).floor()), () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const GameOverScreen())
+            );  
+          });
         } else {
           General().navigateToNextLevel(context, campaignId, nextLevel, settingsState, gamePlayState, animationState,settings);
           Navigator.of(context).pop();        
